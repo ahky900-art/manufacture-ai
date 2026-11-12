@@ -1,2 +1,30 @@
-# manufacture-ai
-manufacture ai
+# 제조 AI 생애주기 지침 V11 · 조항별 참조 온톨로지
+
+**index.html** 하나로 실행되는 GitHub Pages용 정적 웹페이지입니다. 외부 CSS, JavaScript 라이브러리, API 호출을 사용하지 않습니다.
+
+## GitHub Pages 배포
+
+1. GitHub에서 새로운 공개 또는 비공개 저장소를 생성합니다 (비공개 저장소의 Pages 지원은 요금제 정책을 확인하세요).
+2. 저장소 최상단에 `index.html`을 업로드합니다.
+3. Settings > Pages > Build and deployment에서 Deploy from a branch를 선택하고 `main` / `(root)`로 설정합니다.
+4. 배포된 GitHub Pages 주소에서 절을 선택해 참조 관계를 탐색합니다.
+
+브라우저에서 `index.html`을 직접 열어도 실행됩니다.
+
+## 그래프 설명
+
+- **초록**: 제조 AI 생애주기 V11의 프로세스 절 (33개)
+- **파랑**: KS X ISO/IEC 5338:2023의 참조 조항과 국문 원문 절 제목
+- **주황**: IEC 62264-1:2013 원문 PDF에서 확인한 참조 조항의 영문 절 제목을 한국어로 번역해 표시합니다.
+- **보라**: 해당 V11 절에서 IEC 조항을 인용하여 활용한 내용을 한 문장으로 요약
+- **선 옆 내용**: 해당 조항과 연결된 이유. 클릭하면 상세 설명이 나타납니다.
+
+그림 및 SVG 저장, 절 검색, 확대/축소, 참조 관계 표 기능을 지원합니다.
+
+## 출처 및 한계
+
+- 제조 AI 시스템의 설계, 개발 및 배포를 위한 생명주기 프로세스 지침_초안_v11.docx
+- KS X ISO/IEC 5338:2023 (제공된 국문 PDF)
+- IEC 62264-1:2013 (https://www.iso.org/standard/57308.html, 공개 목차 확인 링크: https://standards.iteh.ai/catalog/standards/iso/db90faa8-7d04-4c7f-aeb0-627675ee5a1e/iec-62264-1-2013)
+
+IEC 62264-1 원문 PDF의 절 제목을 대조했습니다. 한국어 제목은 영문 원문을 번역한 것이며, V11의 활용 내용은 별도 노드로 구분했습니다. 연결 설명은 V11의 참조 취지를 요약하며, 두 표준의 조항 전체를 대체하거나 원문에 없는 규범을 추가하지 않습니다.

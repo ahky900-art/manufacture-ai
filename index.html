@@ -1,0 +1,5135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>제조 AI KS V11 · 조항별 참조 온톨로지</title>
+<style>
+:root{--ink:#192c40;--muted:#637184;--line:#dce4ec;--bg:#f5f7fa;--panel:#fff;--nav:#12283e;--k:#137e6b;--b:#2c639d;--o:#a46b22;--p:#7456a6;--shadow:0 7px 28px rgba(20,40,60,.055)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font-family:'Pretendard','Noto Sans KR','Malgun Gothic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8ec4ee;outline-offset:2px}
+.topbar{background:linear-gradient(115deg,#112a40,#1b3e57);color:#fff;padding:22px 29px 19px;border-bottom:1px solid #183954}.topbar .tagline{letter-spacing:.14em;color:#9cc9db;font-weight:700;font-size:10px;text-transform:uppercase}.topbar h1{font-size:23px;font-weight:740;line-height:1.35;margin:7px 0 9px}.topbar p{margin:0;color:#c4d6e2;font-size:12px;line-height:1.65}.summary{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.summary .chip{border-radius:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);padding:6px 9px;font-size:11px;color:#e7f0f8}.layout{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:calc(100vh - 164px)}.sidebar{padding:19px 15px 22px 19px;background:#fff;border-right:1px solid var(--line);max-height:calc(100vh - 165px);overflow:auto;position:sticky;top:0}.side-title{font-size:12px;font-weight:760;letter-spacing:.02em;margin-bottom:11px}.search{width:100%;border-radius:8px;border:1px solid #cfd9e3;padding:10px 11px;color:var(--ink);background:#fcfdff}.list{margin-top:13px}.group-label{margin:17px 0 5px;padding:0 10px;color:#8794a4;font-size:10px;font-weight:800}.item{display:block;width:100%;border:0;background:transparent;border-radius:8px;text-align:left;padding:9px 10px;color:#425367;line-height:1.43;font-size:12px;transition:background .12s}.item:hover{background:#f3f6f9}.item.active{background:#e6f5f0;color:#126957;font-weight:750}.item small{display:block;font-size:10px;opacity:.75;margin-top:2px}.empty{padding:16px 10px;color:var(--muted);font-size:12px}.sidebar .note{padding:12px 10px;color:#718298;font-size:11px;line-height:1.65;border-top:1px solid var(--line);margin-top:16px}
+.content{min-width:0;padding:22px 24px 44px;max-width:1900px}.crumb{color:#59839b;font-size:11px;font-weight:750;letter-spacing:.04em;margin-bottom:7px}.intro{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}.intro h2{margin:0;font-weight:760;font-size:23px;line-height:1.4}.intro p{margin:7px 0 0;max-width:820px;color:#5d6e82;line-height:1.72}.intro-tags{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}.intro-tags span{font-size:11px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:5px 9px;color:#4b5d74}.paper{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin-top:17px;overflow:hidden}.paper-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:15px 17px;border-bottom:1px solid #e7ebf0}.paper-head strong{font-size:13px}.paper-head .sub{font-size:11px;color:#8090a0;margin-top:4px}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:7px}.toolbar button{background:#fff;border:1px solid #d6dfe8;color:#31465b;border-radius:6px;min-height:31px;padding:5px 11px;font-size:11px}.toolbar button:hover{background:#eff5fa}.toolbar button.primary{background:#e8f1fa;border-color:#c7daed}.toolbar label{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:#56677a;margin-left:4px}.toolbar input{accent-color:#237eaf}
+.graph-viewport{background-color:#fff;background-image:radial-gradient(#d7e0e9 0.75px, transparent .75px);background-size:18px 18px;overflow:auto;max-height:645px;min-height:400px;position:relative;scrollbar-color:#bccad8 #f3f6f9}.graph-viewport svg{display:block;max-width:none}.graph-svg .node-rect{stroke-width:1.45;rx:11;ry:11;filter:drop-shadow(0px 2px 2px rgba(24,44,70,.05))}.graph-svg .node-g{cursor:pointer}.graph-svg .node-g:hover .node-rect{stroke-width:2.6}.graph-svg .node-g.active .node-rect{stroke-width:3.5;filter:drop-shadow(0px 3px 6px rgba(25,64,98,.16))}.graph-svg .edge-line{fill:none;stroke-width:2;opacity:.66;cursor:pointer;transition:opacity .12s,stroke-width .12s}.graph-svg .edge-g:hover .edge-line,.graph-svg .edge-g.active .edge-line{stroke-width:3.3;opacity:1}.graph-svg .edge-g{cursor:pointer}.graph-svg .edge-chip{fill:#fff;stroke:#d6e1eb;stroke-width:1;rx:7;ry:7}.graph-svg .edge-g.active .edge-chip{fill:#f0f7ff;stroke:#6ba9d3;stroke-width:1.7}.graph-svg .edge-tag{font-size:11px;font-weight:620;fill:#334861;pointer-events:none}.graph-svg .column-title{font-size:15px;font-weight:750;fill:#293d50}.graph-svg .column-sub{font-size:11px;fill:#7f8997}.graph-svg .node-title{font-size:14px;font-weight:780;fill:#233f57;pointer-events:none}.graph-svg .node-text{font-size:13px;fill:#415569;pointer-events:none}.graph-svg .node-meta{font-size:10.6px;font-weight:720;fill:#6c7c8e;pointer-events:none}.graph-svg .node-small{font-size:11px;fill:#738195;pointer-events:none}.graph-svg.hide-labels .edge-chip,.graph-svg.hide-labels .edge-tag{display:none}
+.legend{display:flex;flex-wrap:wrap;gap:15px;padding:10px 17px;border-top:1px solid #e9edf1;color:#52637a;font-size:11px}.legend b{display:inline-block;border-radius:3px;width:11px;height:11px;vertical-align:-1px;margin-right:5px}.hint{margin-left:auto;color:#8290a0}.selected-box{display:grid;grid-template-columns:190px 1fr;gap:12px;padding:16px 18px;align-items:start;background:#fbfcfe}.selected-box h3{margin:0;color:#344c64;font-size:13px}.detail-main{font-size:12px;line-height:1.8;color:#354b62;white-space:normal}.detail-main strong{font-size:13px;color:#142e49}.meta{color:#73859a;font-size:11px;margin-top:5px}.paper p{color:#596e83;line-height:1.7}
+.table-wrap{overflow-x:auto}.reftable{border-collapse:separate;border-spacing:0;width:100%;table-layout:fixed;font-size:12px}.reftable th{background:#f5f8fb;color:#53687e;text-align:left;font-weight:750;padding:11px 13px;border-bottom:1px solid #dfe7ef}.reftable td{padding:12px 13px;border-bottom:1px solid #ebeff3;vertical-align:top;line-height:1.58;color:#3e5167;overflow-wrap:anywhere}.reftable tbody tr:last-child td{border-bottom:0}.reftable tbody tr:hover{background:#f8fbfe;cursor:pointer}.reftable tbody tr.active{background:#eff7ff}.refbadge{border-radius:4px;font-size:10px;font-weight:750;padding:3px 5px;white-space:nowrap}.refbadge.iso{background:#e8f1fa;color:#295f96}.refbadge.iec{background:#fff1db;color:#92621d}.refbadge.caution{background:#f3f1f8;color:#75568c}.refcode{display:block;font-weight:760;color:#263f5b;margin-top:7px}.refnote{font-size:10px;color:#738195;display:block;margin-top:5px}.relation{font-weight:700;color:#2c4860}.cautionbox{margin-top:16px;border:1px solid #dfe6ee;background:#fbfcfe;border-radius:10px;padding:15px 17px;font-size:11px;color:#62778b;line-height:1.8}.cautionbox strong{color:#34526e}.footer{margin:20px 3px;color:#8291a1;font-size:11px}.footer a{color:#2e6f9c;text-decoration:underline}
+@media(max-width:850px){.layout{display:block}.sidebar{position:static;max-height:260px;border-right:0;border-bottom:1px solid var(--line)}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.group-label{grid-column:1/-1}.content{padding:16px 12px 30px}.topbar{padding:19px 17px}.topbar h1{font-size:20px}.intro h2{font-size:20px}.selected-box{grid-template-columns:1fr}.reftable{min-width:810px}.hint{margin:0}}@media print{.topbar{background:#152d44!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sidebar,.toolbar{display:none}.layout{display:block}.content{padding:8px}.graph-viewport{max-height:none;overflow:visible}.paper{box-shadow:none;break-inside:avoid}.reftable{font-size:10px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="tagline">STANDARD REFERENCE KNOWLEDGE GRAPH / KS V11</div>
+<h1>제조 AI 생애주기 지침 · 조항별 온톨로지 그래프</h1>
+<p>V11 각 절이 KS X ISO/IEC 5338과 IEC 62264-1을 어떤 목적으로 참조하는지, 절 제목·연결 방향·활용 내용을 한 화면에서 탐색합니다.</p>
+<div class="summary"><span class="chip" id="summaryCount">33개 제조 AI 절</span><span class="chip">5338 국문 원문 제목 반영</span><span class="chip">62264-1 원문 절 제목 46개 확인</span><span class="chip">단일 HTML · 외부 라이브러리 없음</span></div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+<div class="side-title">제조 AI 지침 V11 · 프로세스 선택</div>
+<input id="search" class="search" type="search" placeholder="절 번호·프로세스·개념 검색" autocomplete="off" aria-label="프로세스 절 검색">
+<div class="list" id="clauseList"></div>
+<div class="note">V11 절을 선택하면 명시적으로 연결된 5338·62264-1 조항만 표시됩니다. 색상과 번호로 표준을 구분하며, 연결선을 누르면 관계 설명이 열립니다.</div>
+</aside>
+<main class="content">
+<div class="crumb" id="crumb">6.4 기술 프로세스</div>
+<div class="intro"><div><h2 id="mainTitle">6.4.8 AI 데이터 공학</h2><p id="mainDesc"></p></div><div class="intro-tags" id="badges"></div></div>
+<section class="paper" aria-label="표준 참조 그래프">
+<div class="paper-head"><div><strong>조항과 개념의 연결 관계</strong><div class="sub">노드 = 절 번호와 이름 · 화살표 = 참조 방향 · 선 옆 문구 = 참조 목적</div></div>
+<div class="toolbar"><label for="edgeToggle"><input id="edgeToggle" type="checkbox" checked>연결 문구 표시</label><button id="zoomOut" title="축소" aria-label="그래프 축소">−</button><button id="zoomIn" title="확대" aria-label="그래프 확대">＋</button><button id="zoomReset" class="primary">기본 배율</button><button id="saveSvg">SVG 저장</button></div></div>
+<div class="graph-viewport" id="graphViewport"><svg id="graph" class="graph-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="제조 AI 절과 두 참조표준의 조항 및 적용 개념을 연결한 그래프"></svg></div>
+<div class="legend"><span><b style="background:#2c639d"></b>5338 원문 절</span><span><b style="background:#137e6b"></b>제조 AI V11 절</span><span><b style="background:#b27b34"></b>62264-1 참조 절</span><span><b style="background:#7456a6"></b>V11에서의 활용 내용</span><span class="hint">그래프가 넓을 경우 좌우로 스크롤하세요.</span></div>
+<div class="selected-box" aria-live="polite"><h3>선택한 노드 / 관계</h3><div id="details" class="detail-main">연결선 또는 노드를 선택하면 근거와 연결 내용을 확인할 수 있습니다.</div></div>
+</section>
+<section class="paper" aria-label="참조 관계 명세표"><div class="paper-head"><div><strong>참조 관계 명세표</strong><div class="sub">그래프에서 선택한 V11 절의 모든 직접 참조를 표로 확인합니다. 행을 선택하면 연결 설명이 강조됩니다.</div></div><div id="tableCount" class="intro-tags"></div></div>
+<div class="table-wrap"><table class="reftable"><colgroup><col style="width:16%"><col style="width:19%"><col style="width:26%"><col style="width:39%"></colgroup><thead><tr><th>표준</th><th>참조 절</th><th>절 이름 / 확인 상태</th><th>V11에서 연결한 내용</th></tr></thead><tbody id="refRows"></tbody></table></div></section>
+<div class="cautionbox"><strong>표시 기준</strong> · 5338은 제공된 KS X ISO/IEC 5338:2023 국문 원문의 절 이름을 적용했습니다. 62264-1은 IEC 62264-1:2013 원문 PDF와 공개 목차에서 <strong>영문 절 제목을 확인</strong>하고 한국어로 번역했습니다. 각 연결선과 보라색 노드의 내용은 표준의 절 제목이 아니라 <strong>V11에서 해당 절을 활용한 목적</strong>입니다. 엣지 설명은 V11 본문의 참조 목적을 요약한 것으로 다른 표준에 없는 신규 의무를 뜻하지 않습니다.</div>
+<div class="footer">자료: 제조 AI 생애주기 지침 V11 · KS X ISO/IEC 5338:2023 · IEC 62264-1:2013 · <a href="https://www.iso.org/standard/57308.html" target="_blank" rel="noopener">IEC 62264-1 표준 개요</a> · <a href="https://standards.iteh.ai/catalog/standards/iso/db90faa8-7d04-4c7f-aeb0-627675ee5a1e/iec-62264-1-2013" target="_blank" rel="noopener">IEC 62264-1 목차 근거</a></div>
+</main></div>
+<script id="graph-data" type="application/json">{
+  "metadata": {
+    "title": "KS V11 reference ontology graph",
+    "source_document": "제조 AI 시스템의 설계, 개발 및 배포를 위한 생명주기 프로세스 지침_초안_v11.docx",
+    "references": [
+      "KS X ISO/IEC 5338:2023",
+      "IEC 62264-1"
+    ],
+    "caution": "62264 개념 레이블은 V11에 등장한 서술을 요약한 것임. 원문 표준 조항 전체의 검증된 번역이 아님.",
+    "version": "2.0",
+    "heading_sources": {
+      "ISO5338Clause": "KS X ISO/IEC 5338:2023 원문 한국어 절 제목",
+      "IEC62264Clause": "IEC 62264-1:2013 원문 PDF 및 공개 목차에서 확인한 절 제목 (한국어 번역과 영문 병기)"
+    },
+    "relations": "엣지 짧은 설명은 V11 초안에서 해당 표준 조항을 연결한 이유를 요약한 것으로 원문 의무사항을 추가하지 않음",
+    "public_toc": "https://standards.iteh.ai/catalog/standards/iso/db90faa8-7d04-4c7f-aeb0-627675ee5a1e/iec-62264-1-2013"
+  },
+  "clauses": [
+    {
+      "clause": "6.1.1",
+      "title": "획득",
+      "iso5338": [
+        "6.1.1.2",
+        "6.1.1.3"
+      ],
+      "iec62264": [
+        "5.3",
+        "8.3.3",
+        "8.3.5"
+      ],
+      "description": "제조 데이터의 생성 맥락 획득, 데이터 연계·인수기준, 획득자 책임",
+      "group": "6.1"
+    },
+    {
+      "clause": "6.1.2",
+      "title": "공급",
+      "iso5338": [
+        "6.1.2.2",
+        "6.1.2.3"
+      ],
+      "iec62264": [
+        "5.3",
+        "8.3.3",
+        "8.3.4",
+        "8.3.3.2",
+        "5.2.4.8"
+      ],
+      "description": "데이터 대표성·공급 성능·계약상 최소 운영 요건의 합의",
+      "group": "6.1"
+    },
+    {
+      "clause": "6.2.1",
+      "title": "생애주기 모델 관리",
+      "iso5338": [
+        "6.2.1"
+      ],
+      "iec62264": [],
+      "description": "5338의 생애주기 모델 관리 프로세스 채택",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.2.2",
+      "title": "인프라 관리",
+      "iso5338": [
+        "6.2.2"
+      ],
+      "iec62264": [
+        "5.2.1",
+        "5.3",
+        "5.4"
+      ],
+      "description": "제조 기능 계층과 설비 계층에 따른 인프라·연결관계 관리",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.2.3",
+      "title": "포트폴리오 관리",
+      "iso5338": [
+        "6.2.3.2",
+        "6.2.3.3"
+      ],
+      "iec62264": [
+        "5.3",
+        "5.2.3",
+        "5.2.4.1",
+        "6.5.10",
+        "6.5.11"
+      ],
+      "description": "AI 적용 범위, 조직 제조목표 기여, 투자와 실사용 정도 평가",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.2.4",
+      "title": "인적 자원 관리",
+      "iso5338": [
+        "6.2.4.2",
+        "6.2.4.3"
+      ],
+      "iec62264": [],
+      "description": "AI 역량과 제조 업무·공정 전문성의 연계",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.2.5",
+      "title": "품질관리",
+      "iso5338": [
+        "6.2.5.2",
+        "6.2.5.3"
+      ],
+      "iec62264": [
+        "6.4.6",
+        "5.2.2",
+        "5.2.4.6",
+        "6.5.17"
+      ],
+      "description": "제조조건 변경과 AI 출력 영향에 대한 품질관리",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.2.6",
+      "title": "지식 관리",
+      "iso5338": [
+        "6.2.6.2",
+        "6.2.6.3"
+      ],
+      "iec62264": [
+        "8.3.3",
+        "6.5.25",
+        "6.5.26"
+      ],
+      "description": "제품정의·정비 피드백에 근거한 제조 도메인 지식 자산",
+      "group": "6.2"
+    },
+    {
+      "clause": "6.3.1",
+      "title": "프로젝트 계획",
+      "iso5338": [
+        "6.3.1.2",
+        "6.3.1.3"
+      ],
+      "iec62264": [
+        "6.4.3.2",
+        "5.2.4.9",
+        "8.3.2.3",
+        "8.3.2.9"
+      ],
+      "description": "현장시험·연계 작업·생산일정·설비 가용성의 조정",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.2",
+      "title": "프로젝트 평가 및 통제",
+      "iso5338": [
+        "6.3.2.2",
+        "6.3.2.3"
+      ],
+      "iec62264": [
+        "6.4.3.2",
+        "6.5.21",
+        "6.5.23",
+        "7.3"
+      ],
+      "description": "제조 측 변경이 AI 성능·프로젝트에 미치는 영향 평가",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.3",
+      "title": "의사결정 관리",
+      "iso5338": [
+        "6.3.3.2",
+        "6.3.3.3"
+      ],
+      "iec62264": [
+        "6.5.11",
+        "6.5.13",
+        "8.3.4.7",
+        "6.5.10"
+      ],
+      "description": "대안별 AI 성능·제조 KPI·원가·품질 비교",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.4",
+      "title": "위험 관리",
+      "iso5338": [
+        "6.3.4.2",
+        "6.3.4.3"
+      ],
+      "iec62264": [
+        "5.2.1",
+        "5.2.4.6",
+        "5.2.2",
+        "6.5.11",
+        "6.5.13",
+        "6.4.3.2",
+        "5.2.4.10"
+      ],
+      "description": "AI 출력과 물리 공정·안전·현장 조치 영향 분석",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.5",
+      "title": "형상 관리",
+      "iso5338": [
+        "6.3.5.2",
+        "6.3.5.3"
+      ],
+      "iec62264": [
+        "8.3.3.2",
+        "5.2.4.10",
+        "5.3",
+        "5.4",
+        "6.4.3.2"
+      ],
+      "description": "AI 형상과 설비·제품·생산규칙 형상 조합 및 변경 이력",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.6",
+      "title": "정보 관리",
+      "iso5338": [
+        "6.3.6.2",
+        "6.3.6.3"
+      ],
+      "iec62264": [
+        "7.1",
+        "5.2.4.7",
+        "5.2.4.10",
+        "8.3.5",
+        "8.3.4.2"
+      ],
+      "description": "제조조건·형상·평가 기록·생산 추적정보 연계",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.7",
+      "title": "측정",
+      "iso5338": [
+        "6.3.7"
+      ],
+      "iec62264": [
+        "5.2.4.4",
+        "8.3.2.6",
+        "6.5.11"
+      ],
+      "description": "AI 성능과 제조조건 변화를 함께 측정",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.3.8",
+      "title": "품질보증",
+      "iso5338": [
+        "6.3.8.2",
+        "6.3.8.3"
+      ],
+      "iec62264": [
+        "5.2.4.5",
+        "5.2.4.6",
+        "5.2.4.12"
+      ],
+      "description": "데이터 대표성과 희소 불량·고장 사례 확인",
+      "group": "6.3"
+    },
+    {
+      "clause": "6.4.1",
+      "title": "비즈니스 또는 임무 분석",
+      "iso5338": [
+        "6.4.1.2",
+        "6.4.1.3"
+      ],
+      "iec62264": [
+        "7.2",
+        "5.3",
+        "6.5.10"
+      ],
+      "description": "적용 제조 영역·대상 설비·개선목표 식별",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.2",
+      "title": "이해관계자 필요 및 요구사항 정의",
+      "iso5338": [
+        "6.4.2.2",
+        "6.4.2.3"
+      ],
+      "iec62264": [
+        "6.5.14",
+        "6.5.15",
+        "6.5.10",
+        "6.5.11",
+        "6.5.13",
+        "8.3.4.7"
+      ],
+      "description": "제조조건·AI 기술성능·실사용·제조 KPI의 성공조건 합의",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.3",
+      "title": "시스템 요구사항 정의",
+      "iso5338": [
+        "6.4.3.2",
+        "6.4.3.3"
+      ],
+      "iec62264": [
+        "5.2.1",
+        "5.2.4.8",
+        "8.3.4.7",
+        "8.3.2.3",
+        "7.1",
+        "5.2.4.6",
+        "8.3.2.10",
+        "5.2.4.11"
+      ],
+      "description": "운영 지연·가용성·사람과 AI의 승인·개입 권한 설정",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.4",
+      "title": "시스템 아키텍처 정의",
+      "iso5338": [
+        "6.4.4"
+      ],
+      "iec62264": [
+        "5.2.1",
+        "5.3",
+        "6.3"
+      ],
+      "description": "AI·OT·설비 기능 배치 및 인터페이스 설계",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.5",
+      "title": "디자인 정의",
+      "iso5338": [
+        "6.4.5"
+      ],
+      "iec62264": [],
+      "description": "5338의 디자인 정의 프로세스 채택",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.6",
+      "title": "시스템 분석",
+      "iso5338": [
+        "6.4.6"
+      ],
+      "iec62264": [],
+      "description": "5338의 시스템 분석 프로세스 채택",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.7",
+      "title": "지식 획득",
+      "iso5338": [
+        "6.4.7.2",
+        "6.4.7.3"
+      ],
+      "iec62264": [
+        "8.3.3",
+        "5.2.4.5",
+        "5.2.4.12"
+      ],
+      "description": "제품·공정·설비 관계와 불량·고장 원인 지식 획득",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.8",
+      "title": "AI 데이터 공학",
+      "iso5338": [
+        "6.4.8.2",
+        "6.4.8.3"
+      ],
+      "iec62264": [
+        "8.3.3",
+        "8.3.5",
+        "5.3",
+        "8.3.4",
+        "5.2.4.5",
+        "5.2.4.6",
+        "5.2.4.12"
+      ],
+      "description": "제조 데이터 맥락화, 계보·출처, 제조조건별 대표성 평가",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.9",
+      "title": "구현",
+      "iso5338": [
+        "6.4.9"
+      ],
+      "iec62264": [],
+      "description": "5338의 구현 프로세스 채택",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.10",
+      "title": "통합",
+      "iso5338": [
+        "6.4.10"
+      ],
+      "iec62264": [
+        "5.2.4.4",
+        "5.2.4.3",
+        "5.2.4.6"
+      ],
+      "description": "AI 입력 수집과 출력 전달·제어 경로 통합",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.11",
+      "title": "검증",
+      "iso5338": [
+        "6.4.11.2",
+        "6.4.11.3"
+      ],
+      "iec62264": [
+        "8.3.5",
+        "5.2.4.7",
+        "5.2.1",
+        "5.2.4.6",
+        "8.3.3.2"
+      ],
+      "description": "AI 출력과 실제 실행 실적, 종단 간 추적, 운전 시나리오 검증",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.12",
+      "title": "전환",
+      "iso5338": [
+        "6.4.12.2",
+        "6.4.12.3"
+      ],
+      "iec62264": [
+        "5.2.4.10",
+        "8.3.5",
+        "8.3.3.2",
+        "5.2.4.2",
+        "5.2.4.9",
+        "6.4.3.4",
+        "6.4.3.3",
+        "5.3"
+      ],
+      "description": "생산환경으로의 전환·복귀, 준비 상태·문서·조치 주체 인계",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.13",
+      "title": "확인",
+      "iso5338": [
+        "6.4.13.2",
+        "6.4.13.3"
+      ],
+      "iec62264": [
+        "8.3.4",
+        "5.2.4.8",
+        "5.2.4.7"
+      ],
+      "description": "실제 생산조건에서 성능·제조성과·현장 사용 여부 확인",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.14",
+      "title": "지속적인 확인",
+      "iso5338": [
+        "6.4.14.2",
+        "6.4.14.3"
+      ],
+      "iec62264": [
+        "6.5.21",
+        "6.5.17",
+        "8.3.4",
+        "5.2.4.4",
+        "8.3.2.6",
+        "6.5.25",
+        "5.2.4.8"
+      ],
+      "description": "운영 중 제조조건 변화·데이터 드리프트·AI 성능 변화 감시",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.15",
+      "title": "운영",
+      "iso5338": [
+        "6.4.15.2",
+        "6.4.15.3"
+      ],
+      "iec62264": [
+        "5.2.4.6",
+        "5.2.4.10",
+        "6.4.3.3",
+        "6.5.23",
+        "5.2.4.7"
+      ],
+      "description": "AI 출력 제한, 작업자 개입, 안전 운영 전환 및 복구",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.16",
+      "title": "유지 보수",
+      "iso5338": [
+        "6.4.16.2",
+        "6.4.16.3"
+      ],
+      "iec62264": [
+        "5.2.4.12",
+        "6.4.3.2",
+        "8.3.3.2",
+        "6.5.22",
+        "6.5.23"
+      ],
+      "description": "AI·설비 측 조치 조정, 회복 확인, 유지보수 불가 시 폐기 판단",
+      "group": "6.4"
+    },
+    {
+      "clause": "6.4.17",
+      "title": "폐기",
+      "iso5338": [
+        "6.4.17"
+      ],
+      "iec62264": [],
+      "description": "5338의 폐기 프로세스 채택",
+      "group": "6.4"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "manufacturing-v11",
+      "label": "제조 AI 생애주기 KS V11",
+      "kind": "Document",
+      "verified_heading": false
+    },
+    {
+      "id": "V11:6.1.1",
+      "label": "6.1.1 획득",
+      "kind": "ManufacturingClause",
+      "description": "제조 데이터의 생성 맥락 획득, 데이터 연계·인수기준, 획득자 책임",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "획득 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.1.1.2",
+      "label": "KS X ISO/IEC 5338 6.1.1.2",
+      "kind": "ISO5338Clause",
+      "description": "획득 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "획득 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.1.1.3",
+      "label": "KS X ISO/IEC 5338 6.1.1.3",
+      "kind": "ISO5338Clause",
+      "description": "획득 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "획득 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.3",
+      "label": "KS X IEC 62264-1 5.3",
+      "kind": "IEC62264Clause",
+      "description": "역할 기반 설비 계층",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "역할 기반 설비 계층",
+      "headingEn": "Role-based equipment hierarchy",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.3",
+      "label": "역할 기반 설비 계층",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "역할 기반 설비 계층",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.3",
+      "label": "KS X IEC 62264-1 8.3.3",
+      "kind": "IEC62264Clause",
+      "description": "제품정의 정보와 제품·공정 세그먼트",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제품정의 정보",
+      "headingEn": "Product definition information",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.3",
+      "label": "제품정의 정보와 제품·공정 세그먼트",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제품정의 정보와 제품·공정 세그먼트",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.5",
+      "label": "KS X IEC 62264-1 8.3.5",
+      "kind": "IEC62264Clause",
+      "description": "세그먼트 요구·실적/실제 사용 자원",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "세그먼트 관계",
+      "headingEn": "Segment relationships",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.5",
+      "label": "세그먼트 요구·실적/실제 사용 자원",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "세그먼트 요구·실적/실제 사용 자원",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.1.2",
+      "label": "6.1.2 공급",
+      "kind": "ManufacturingClause",
+      "description": "데이터 대표성·공급 성능·계약상 최소 운영 요건의 합의",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "공급 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.1.2.2",
+      "label": "KS X ISO/IEC 5338 6.1.2.2",
+      "kind": "ISO5338Clause",
+      "description": "공급 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "공급 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.1.2.3",
+      "label": "KS X ISO/IEC 5338 6.1.2.3",
+      "kind": "ISO5338Clause",
+      "description": "공급 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "공급 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:8.3.4",
+      "label": "KS X IEC 62264-1 8.3.4",
+      "kind": "IEC62264Clause",
+      "description": "생산이력·실적·실행 정보",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 일정 및 생산 실적 정보",
+      "headingEn": "Production schedule and production performance information",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.4",
+      "label": "생산이력·실적·실행 정보",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산이력·실적·실행 정보",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.3.2",
+      "label": "KS X IEC 62264-1 8.3.3.2",
+      "kind": "IEC62264Clause",
+      "description": "제품 생산규칙",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제품 생산규칙",
+      "headingEn": "Product production rules",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.3.2",
+      "label": "제품 생산규칙",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제품 생산규칙",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.8",
+      "label": "KS X IEC 62264-1 5.2.4.8",
+      "kind": "IEC62264Clause",
+      "description": "실제 결과와 예상 결과의 비교",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "성과 분석",
+      "headingEn": "Performance analysis",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.8",
+      "label": "실제 결과와 예상 결과의 비교",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "실제 결과와 예상 결과의 비교",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.2.1",
+      "label": "6.2.1 생애주기 모델 관리",
+      "kind": "ManufacturingClause",
+      "description": "5338의 생애주기 모델 관리 프로세스 채택",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "생애주기 모델 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.1",
+      "label": "KS X ISO/IEC 5338 6.2.1",
+      "kind": "ISO5338Clause",
+      "description": "생애주기 모델 관리 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "생애주기 모델 관리 프로세스",
+      "parent_process": "생애주기 모델 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.2.2",
+      "label": "6.2.2 인프라 관리",
+      "kind": "ManufacturingClause",
+      "description": "제조 기능 계층과 설비 계층에 따른 인프라·연결관계 관리",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "인프라 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.2",
+      "label": "KS X ISO/IEC 5338 6.2.2",
+      "kind": "ISO5338Clause",
+      "description": "인프라 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "인프라 관리 프로세스",
+      "parent_process": "인프라 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.1",
+      "label": "KS X IEC 62264-1 5.2.1",
+      "kind": "IEC62264Clause",
+      "description": "제조 기능 계층",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "계층 수준",
+      "headingEn": "Hierarchy levels",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.1",
+      "label": "제조 기능 계층",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 기능 계층",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.4",
+      "label": "KS X IEC 62264-1 5.4",
+      "kind": "IEC62264Clause",
+      "description": "물리적 자산 설비 계층",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "물리적 자산 설비 계층",
+      "headingEn": "Physical asset equipment hierarchy",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.4",
+      "label": "물리적 자산 설비 계층",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "물리적 자산 설비 계층",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.2.3",
+      "label": "6.2.3 포트폴리오 관리",
+      "kind": "ManufacturingClause",
+      "description": "AI 적용 범위, 조직 제조목표 기여, 투자와 실사용 정도 평가",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "포트폴리오 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.3.2",
+      "label": "KS X ISO/IEC 5338 6.2.3.2",
+      "kind": "ISO5338Clause",
+      "description": "포트폴리오 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "포트폴리오 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.2.3.3",
+      "label": "KS X ISO/IEC 5338 6.2.3.3",
+      "kind": "ISO5338Clause",
+      "description": "포트폴리오 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "포트폴리오 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.3",
+      "label": "KS X IEC 62264-1 5.2.3",
+      "kind": "IEC62264Clause",
+      "description": "사업계획 및 물류 활동",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "레벨 4 활동",
+      "headingEn": "Level 4 activities",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.3",
+      "label": "사업계획 및 물류 활동",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "사업계획 및 물류 활동",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.1",
+      "label": "KS X IEC 62264-1 5.2.4.1",
+      "kind": "IEC62264Clause",
+      "description": "제조 운영 관리 일반 활동",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "레벨 3 일반 활동",
+      "headingEn": "Level 3 general activities",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.1",
+      "label": "제조 운영 관리 일반 활동",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 운영 관리 일반 활동",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.10",
+      "label": "KS X IEC 62264-1 6.5.10",
+      "kind": "IEC62264Clause",
+      "description": "생산 원가 및 자원 목표",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 원가 목표",
+      "headingEn": "Production cost objectives",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.10",
+      "label": "생산 원가 및 자원 목표",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 원가 및 자원 목표",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.11",
+      "label": "KS X IEC 62264-1 6.5.11",
+      "kind": "IEC62264Clause",
+      "description": "생산 실적·자원 사용·비용",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 실적 및 비용",
+      "headingEn": "Production performance and costs",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.11",
+      "label": "생산 실적·자원 사용·비용",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 실적·자원 사용·비용",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.2.4",
+      "label": "6.2.4 인적 자원 관리",
+      "kind": "ManufacturingClause",
+      "description": "AI 역량과 제조 업무·공정 전문성의 연계",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "인적 자원 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.4.2",
+      "label": "KS X ISO/IEC 5338 6.2.4.2",
+      "kind": "ISO5338Clause",
+      "description": "인적 자원 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "인적 자원 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.2.4.3",
+      "label": "KS X ISO/IEC 5338 6.2.4.3",
+      "kind": "ISO5338Clause",
+      "description": "인적 자원 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "인적 자원 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.2.5",
+      "label": "6.2.5 품질관리",
+      "kind": "ManufacturingClause",
+      "description": "제조조건 변경과 AI 출력 영향에 대한 품질관리",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "품질관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.5.2",
+      "label": "KS X ISO/IEC 5338 6.2.5.2",
+      "kind": "ISO5338Clause",
+      "description": "품질관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "품질관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.2.5.3",
+      "label": "KS X ISO/IEC 5338 6.2.5.3",
+      "kind": "ISO5338Clause",
+      "description": "품질관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "품질관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.4.6",
+      "label": "KS X IEC 62264-1 6.4.6",
+      "kind": "IEC62264Clause",
+      "description": "제조 품질보증 기능",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "품질보증",
+      "headingEn": "Quality assurance",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.4.6",
+      "label": "제조 품질보증 기능",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 품질보증 기능",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.2",
+      "label": "KS X IEC 62264-1 5.2.2",
+      "kind": "IEC62264Clause",
+      "description": "안전·신뢰성·효율·품질·규제 준수",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제조 운영 및 제어 영역에 포함하기 위한 판단 기준",
+      "headingEn": "Criteria for inclusion in manufacturing operations and control domain",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.2",
+      "label": "안전·신뢰성·효율·품질·규제 준수",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "안전·신뢰성·효율·품질·규제 준수",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.6",
+      "label": "KS X IEC 62264-1 5.2.4.6",
+      "kind": "IEC62264Clause",
+      "description": "공정 제어·경보·의사결정 지원",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "공정 관리",
+      "headingEn": "Process management",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.6",
+      "label": "공정 제어·경보·의사결정 지원",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "공정 제어·경보·의사결정 지원",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.17",
+      "label": "KS X IEC 62264-1 6.5.17",
+      "kind": "IEC62264Clause",
+      "description": "공정 중 특채 요청",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "공정 중 특채 요청",
+      "headingEn": "In-process waiver request",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.17",
+      "label": "공정 중 특채 요청",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "공정 중 특채 요청",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.2.6",
+      "label": "6.2.6 지식 관리",
+      "kind": "ManufacturingClause",
+      "description": "제품정의·정비 피드백에 근거한 제조 도메인 지식 자산",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "지식 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.2.6.2",
+      "label": "KS X ISO/IEC 5338 6.2.6.2",
+      "kind": "ISO5338Clause",
+      "description": "지식 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "지식 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.2.6.3",
+      "label": "KS X ISO/IEC 5338 6.2.6.3",
+      "kind": "ISO5338Clause",
+      "description": "지식 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "지식 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.5.25",
+      "label": "KS X IEC 62264-1 6.5.25",
+      "kind": "IEC62264Clause",
+      "description": "정비 기술 피드백",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "정비 기술 피드백",
+      "headingEn": "Maintenance technical feedback",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.25",
+      "label": "정비 기술 피드백",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비 기술 피드백",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.26",
+      "label": "KS X IEC 62264-1 6.5.26",
+      "kind": "IEC62264Clause",
+      "description": "제품·공정 기술 피드백",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제품 및 공정 기술 피드백",
+      "headingEn": "Product and process technical feedback",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.26",
+      "label": "제품·공정 기술 피드백",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제품·공정 기술 피드백",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.1",
+      "label": "6.3.1 프로젝트 계획",
+      "kind": "ManufacturingClause",
+      "description": "현장시험·연계 작업·생산일정·설비 가용성의 조정",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "프로젝트 계획 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.1.2",
+      "label": "KS X ISO/IEC 5338 6.3.1.2",
+      "kind": "ISO5338Clause",
+      "description": "프로젝트 계획 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "프로젝트 계획 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.1.3",
+      "label": "KS X ISO/IEC 5338 6.3.1.3",
+      "kind": "ISO5338Clause",
+      "description": "프로젝트 계획 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "프로젝트 계획 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.4.3.2",
+      "label": "KS X IEC 62264-1 6.4.3.2",
+      "kind": "IEC62264Clause",
+      "description": "정비·엔지니어링 조정/변경",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "공정 지원 엔지니어링",
+      "headingEn": "Process support engineering",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.4.3.2",
+      "label": "정비·엔지니어링 조정/변경",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비·엔지니어링 조정/변경",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.9",
+      "label": "KS X IEC 62264-1 5.2.4.9",
+      "kind": "IEC62264Clause",
+      "description": "운영 및 상세 일정 수립",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "운영 및 상세 일정 수립",
+      "headingEn": "Operations and detailed scheduling",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.9",
+      "label": "운영 및 상세 일정 수립",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "운영 및 상세 일정 수립",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.2.3",
+      "label": "KS X IEC 62264-1 8.3.2.3",
+      "kind": "IEC62264Clause",
+      "description": "생산능력 구분",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산능력 유형",
+      "headingEn": "Production capacity types",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.2.3",
+      "label": "생산능력 구분",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산능력 구분",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.2.9",
+      "label": "KS X IEC 62264-1 8.3.2.9",
+      "kind": "IEC62264Clause",
+      "description": "정비와 생산능력 일정",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "예방·예측 정비 정보",
+      "headingEn": "Preventive/predictive maintenance information",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.2.9",
+      "label": "정비와 생산능력 일정",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비와 생산능력 일정",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.2",
+      "label": "6.3.2 프로젝트 평가 및 통제",
+      "kind": "ManufacturingClause",
+      "description": "제조 측 변경이 AI 성능·프로젝트에 미치는 영향 평가",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "프로젝트 평가 및 통제 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.2.2",
+      "label": "KS X ISO/IEC 5338 6.3.2.2",
+      "kind": "ISO5338Clause",
+      "description": "프로젝트 평가 및 통제 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "프로젝트 평가 및 통제 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.2.3",
+      "label": "KS X ISO/IEC 5338 6.3.2.3",
+      "kind": "ISO5338Clause",
+      "description": "프로젝트 평가 및 통제 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "프로젝트 평가 및 통제 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.5.21",
+      "label": "KS X IEC 62264-1 6.5.21",
+      "kind": "IEC62264Clause",
+      "description": "제품·공정 정의 신규/변경 요청",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제품 및 공정 정보 요청",
+      "headingEn": "Product and process information request",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.21",
+      "label": "제품·공정 정의 신규/변경 요청",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제품·공정 정의 신규/변경 요청",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.23",
+      "label": "KS X IEC 62264-1 6.5.23",
+      "kind": "IEC62264Clause",
+      "description": "정비 응답/조치 완료",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "정비 응답",
+      "headingEn": "Maintenance responses",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.23",
+      "label": "정비 응답/조치 완료",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비 응답/조치 완료",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:7.3",
+      "label": "KS X IEC 62264-1 7.3",
+      "kind": "IEC62264Clause",
+      "description": "제조 운영 내 형상 관리",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제조 운영 관리의 기타 활동",
+      "headingEn": "Other activities within manufacturing operations management",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:7.3",
+      "label": "제조 운영 내 형상 관리",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 운영 내 형상 관리",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.3",
+      "label": "6.3.3 의사결정 관리",
+      "kind": "ManufacturingClause",
+      "description": "대안별 AI 성능·제조 KPI·원가·품질 비교",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "의사결정 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.3.2",
+      "label": "KS X ISO/IEC 5338 6.3.3.2",
+      "kind": "ISO5338Clause",
+      "description": "의사결정 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "의사결정 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.3.3",
+      "label": "KS X ISO/IEC 5338 6.3.3.3",
+      "kind": "ISO5338Clause",
+      "description": "의사결정 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "의사결정 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.5.13",
+      "label": "KS X IEC 62264-1 6.5.13",
+      "kind": "IEC62264Clause",
+      "description": "품질 결과",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "품질보증 결과",
+      "headingEn": "Quality assurance results",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.13",
+      "label": "품질 결과",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "품질 결과",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.4.7",
+      "label": "KS X IEC 62264-1 8.3.4.7",
+      "kind": "IEC62264Clause",
+      "description": "생산량·소요시간·생산 요청 이행",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 일정 및 실적",
+      "headingEn": "Production schedule and performance",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.4.7",
+      "label": "생산량·소요시간·생산 요청 이행",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산량·소요시간·생산 요청 이행",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.4",
+      "label": "6.3.4 위험 관리",
+      "kind": "ManufacturingClause",
+      "description": "AI 출력과 물리 공정·안전·현장 조치 영향 분석",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "위험 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.4.2",
+      "label": "KS X ISO/IEC 5338 6.3.4.2",
+      "kind": "ISO5338Clause",
+      "description": "위험 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "위험 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.4.3",
+      "label": "KS X ISO/IEC 5338 6.3.4.3",
+      "kind": "ISO5338Clause",
+      "description": "위험 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "위험 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.4.10",
+      "label": "KS X IEC 62264-1 5.2.4.10",
+      "kind": "IEC62264Clause",
+      "description": "작업지침·레시피·표준작업절차 기록",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "문서 관리",
+      "headingEn": "Document control",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.10",
+      "label": "작업지침·레시피·표준작업절차 기록",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "작업지침·레시피·표준작업절차 기록",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.5",
+      "label": "6.3.5 형상 관리",
+      "kind": "ManufacturingClause",
+      "description": "AI 형상과 설비·제품·생산규칙 형상 조합 및 변경 이력",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "형상 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.5.2",
+      "label": "KS X ISO/IEC 5338 6.3.5.2",
+      "kind": "ISO5338Clause",
+      "description": "형상 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "형상 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.5.3",
+      "label": "KS X ISO/IEC 5338 6.3.5.3",
+      "kind": "ISO5338Clause",
+      "description": "형상 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "형상 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.3.6",
+      "label": "6.3.6 정보 관리",
+      "kind": "ManufacturingClause",
+      "description": "제조조건·형상·평가 기록·생산 추적정보 연계",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "정보 관리 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.6.2",
+      "label": "KS X ISO/IEC 5338 6.3.6.2",
+      "kind": "ISO5338Clause",
+      "description": "정보 관리 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "정보 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.6.3",
+      "label": "KS X ISO/IEC 5338 6.3.6.3",
+      "kind": "ISO5338Clause",
+      "description": "정보 관리 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "정보 관리 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:7.1",
+      "label": "KS X IEC 62264-1 7.1",
+      "kind": "IEC62264Clause",
+      "description": "제조 운영 자원 및 상태 정보",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제조 운영 관리 활동",
+      "headingEn": "Manufacturing operations management activities",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:7.1",
+      "label": "제조 운영 자원 및 상태 정보",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 운영 자원 및 상태 정보",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.7",
+      "label": "KS X IEC 62264-1 5.2.4.7",
+      "kind": "IEC62264Clause",
+      "description": "생산 추적과 공정/인력/자재 기록",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 추적",
+      "headingEn": "Production tracking",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.7",
+      "label": "생산 추적과 공정/인력/자재 기록",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 추적과 공정/인력/자재 기록",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.4.2",
+      "label": "KS X IEC 62264-1 8.3.4.2",
+      "kind": "IEC62264Clause",
+      "description": "생산 이력 정보",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 이력 정보",
+      "headingEn": "Production history information",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.4.2",
+      "label": "생산 이력 정보",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 이력 정보",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.7",
+      "label": "6.3.7 측정",
+      "kind": "ManufacturingClause",
+      "description": "AI 성능과 제조조건 변화를 함께 측정",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "측정 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.7",
+      "label": "KS X ISO/IEC 5338 6.3.7",
+      "kind": "ISO5338Clause",
+      "description": "측정 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "측정 프로세스",
+      "parent_process": "측정 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.4.4",
+      "label": "KS X IEC 62264-1 5.2.4.4",
+      "kind": "IEC62264Clause",
+      "description": "제조 데이터 수집·설비/공정 상태",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "데이터 수집 및 획득",
+      "headingEn": "Data collection and acquisition",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.4",
+      "label": "제조 데이터 수집·설비/공정 상태",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 데이터 수집·설비/공정 상태",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:8.3.2.6",
+      "label": "KS X IEC 62264-1 8.3.2.6",
+      "kind": "IEC62264Clause",
+      "description": "설비 상태와 사용 정보",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산설비 상태",
+      "headingEn": "Production equipment status",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.2.6",
+      "label": "설비 상태와 사용 정보",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "설비 상태와 사용 정보",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.3.8",
+      "label": "6.3.8 품질보증",
+      "kind": "ManufacturingClause",
+      "description": "데이터 대표성과 희소 불량·고장 사례 확인",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "품질보증 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.3.8.2",
+      "label": "KS X ISO/IEC 5338 6.3.8.2",
+      "kind": "ISO5338Clause",
+      "description": "품질보증 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "품질보증 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.3.8.3",
+      "label": "KS X ISO/IEC 5338 6.3.8.3",
+      "kind": "ISO5338Clause",
+      "description": "품질보증 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "품질보증 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.4.5",
+      "label": "KS X IEC 62264-1 5.2.4.5",
+      "kind": "IEC62264Clause",
+      "description": "품질시험 및 SPC/SQC 결과",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "품질 운영 관리",
+      "headingEn": "Quality operations management",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.5",
+      "label": "품질시험 및 SPC/SQC 결과",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "품질시험 및 SPC/SQC 결과",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.12",
+      "label": "KS X IEC 62264-1 5.2.4.12",
+      "kind": "IEC62264Clause",
+      "description": "정비 운영 및 과거 사건 이력",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "정비 운영 관리",
+      "headingEn": "Maintenance operations management",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.12",
+      "label": "정비 운영 및 과거 사건 이력",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비 운영 및 과거 사건 이력",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.1",
+      "label": "6.4.1 비즈니스 또는 임무 분석",
+      "kind": "ManufacturingClause",
+      "description": "적용 제조 영역·대상 설비·개선목표 식별",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "비즈니스 또는 임무 분석 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.1.2",
+      "label": "KS X ISO/IEC 5338 6.4.1.2",
+      "kind": "ISO5338Clause",
+      "description": "비즈니스 또는 임무 분석 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "비즈니스 또는 임무 분석 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.1.3",
+      "label": "KS X ISO/IEC 5338 6.4.1.3",
+      "kind": "ISO5338Clause",
+      "description": "비즈니스 또는 임무 분석 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "비즈니스 또는 임무 분석 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:7.2",
+      "label": "KS X IEC 62264-1 7.2",
+      "kind": "IEC62264Clause",
+      "description": "생산·정비·품질·재고 운영 영역",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제조 운영 관리 범주",
+      "headingEn": "Manufacturing operations management categories",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:7.2",
+      "label": "생산·정비·품질·재고 운영 영역",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산·정비·품질·재고 운영 영역",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.2",
+      "label": "6.4.2 이해관계자 필요 및 요구사항 정의",
+      "kind": "ManufacturingClause",
+      "description": "제조조건·AI 기술성능·실사용·제조 KPI의 성공조건 합의",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "이해관계자 필요 및 요구사항 정의 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.2.2",
+      "label": "KS X ISO/IEC 5338 6.4.2.2",
+      "kind": "ISO5338Clause",
+      "description": "이해관계자 필요 및 요구사항 정의 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "이해관계자 필요 및 요구사항 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.2.3",
+      "label": "KS X ISO/IEC 5338 6.4.2.3",
+      "kind": "ISO5338Clause",
+      "description": "이해관계자 필요 및 요구사항 정의 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "이해관계자 필요 및 요구사항 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.5.14",
+      "label": "KS X IEC 62264-1 6.5.14",
+      "kind": "IEC62264Clause",
+      "description": "표준 및 고객 요구사항",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "표준 및 고객 요구사항",
+      "headingEn": "Standards and customer requirements",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.14",
+      "label": "표준 및 고객 요구사항",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "표준 및 고객 요구사항",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.5.15",
+      "label": "KS X IEC 62264-1 6.5.15",
+      "kind": "IEC62264Clause",
+      "description": "제품 및 공정 요구사항",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "제품 및 공정 요구사항",
+      "headingEn": "Product and process requirements",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.15",
+      "label": "제품 및 공정 요구사항",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제품 및 공정 요구사항",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.3",
+      "label": "6.4.3 시스템 요구사항 정의",
+      "kind": "ManufacturingClause",
+      "description": "운영 지연·가용성·사람과 AI의 승인·개입 권한 설정",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "시스템 요구사항 정의 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.3.2",
+      "label": "KS X ISO/IEC 5338 6.4.3.2",
+      "kind": "ISO5338Clause",
+      "description": "시스템 요구사항 정의 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "시스템 요구사항 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.3.3",
+      "label": "KS X ISO/IEC 5338 6.4.3.3",
+      "kind": "ISO5338Clause",
+      "description": "시스템 요구사항 정의 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "시스템 요구사항 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:8.3.2.10",
+      "label": "KS X IEC 62264-1 8.3.2.10",
+      "kind": "IEC62264Clause",
+      "description": "수동·반자동·자동 공정 구분",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "공정 세그먼트 능력",
+      "headingEn": "Process segment capability",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:8.3.2.10",
+      "label": "수동·반자동·자동 공정 구분",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "수동·반자동·자동 공정 구분",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:5.2.4.11",
+      "label": "KS X IEC 62264-1 5.2.4.11",
+      "kind": "IEC62264Clause",
+      "description": "작업자 자격 추적",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "인력 관리",
+      "headingEn": "Labor management",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.11",
+      "label": "작업자 자격 추적",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "작업자 자격 추적",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.4",
+      "label": "6.4.4 시스템 아키텍처 정의",
+      "kind": "ManufacturingClause",
+      "description": "AI·OT·설비 기능 배치 및 인터페이스 설계",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "시스템 아키텍처 정의 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.4",
+      "label": "KS X ISO/IEC 5338 6.4.4",
+      "kind": "ISO5338Clause",
+      "description": "시스템 아키텍처 정의 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "시스템 아키텍처 정의 프로세스",
+      "parent_process": "시스템 아키텍처 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.3",
+      "label": "KS X IEC 62264-1 6.3",
+      "kind": "IEC62264Clause",
+      "description": "제조 기능 모델·정보 교환",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "기능 모델",
+      "headingEn": "Functional model",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.3",
+      "label": "제조 기능 모델·정보 교환",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "제조 기능 모델·정보 교환",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.5",
+      "label": "6.4.5 디자인 정의",
+      "kind": "ManufacturingClause",
+      "description": "5338의 디자인 정의 프로세스 채택",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "디자인 정의 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.5",
+      "label": "KS X ISO/IEC 5338 6.4.5",
+      "kind": "ISO5338Clause",
+      "description": "디자인 정의 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "디자인 정의 프로세스",
+      "parent_process": "디자인 정의 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.6",
+      "label": "6.4.6 시스템 분석",
+      "kind": "ManufacturingClause",
+      "description": "5338의 시스템 분석 프로세스 채택",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "시스템 분석 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.6",
+      "label": "KS X ISO/IEC 5338 6.4.6",
+      "kind": "ISO5338Clause",
+      "description": "시스템 분석 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "시스템 분석 프로세스",
+      "parent_process": "시스템 분석 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.7",
+      "label": "6.4.7 지식 획득",
+      "kind": "ManufacturingClause",
+      "description": "제품·공정·설비 관계와 불량·고장 원인 지식 획득",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "지식 획득 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.7.2",
+      "label": "KS X ISO/IEC 5338 6.4.7.2",
+      "kind": "ISO5338Clause",
+      "description": "지식 획득 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과",
+      "parent_process": "지식 획득 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.7.3",
+      "label": "KS X ISO/IEC 5338 6.4.7.3",
+      "kind": "ISO5338Clause",
+      "description": "지식 획득 관련 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "활동 및 태스크",
+      "parent_process": "지식 획득 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.8",
+      "label": "6.4.8 AI 데이터 공학",
+      "kind": "ManufacturingClause",
+      "description": "제조 데이터 맥락화, 계보·출처, 제조조건별 대표성 평가",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "AI 데이터 공학 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.8.2",
+      "label": "KS X ISO/IEC 5338 6.4.8.2",
+      "kind": "ISO5338Clause",
+      "description": "AI 데이터 공학 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과",
+      "parent_process": "AI 데이터 공학 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.8.3",
+      "label": "KS X ISO/IEC 5338 6.4.8.3",
+      "kind": "ISO5338Clause",
+      "description": "AI 데이터 공학의 데이터 획득·선정·레이블링·분석·준비·보호 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "활동 및 태스크",
+      "parent_process": "AI 데이터 공학 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.9",
+      "label": "6.4.9 구현",
+      "kind": "ManufacturingClause",
+      "description": "5338의 구현 프로세스 채택",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "구현 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.9",
+      "label": "KS X ISO/IEC 5338 6.4.9",
+      "kind": "ISO5338Clause",
+      "description": "구현 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "구현 프로세스",
+      "parent_process": "구현 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.10",
+      "label": "6.4.10 통합",
+      "kind": "ManufacturingClause",
+      "description": "AI 입력 수집과 출력 전달·제어 경로 통합",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "통합 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.10",
+      "label": "KS X ISO/IEC 5338 6.4.10",
+      "kind": "ISO5338Clause",
+      "description": "통합 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "통합 프로세스",
+      "parent_process": "통합 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.4.3",
+      "label": "KS X IEC 62264-1 5.2.4.3",
+      "kind": "IEC62264Clause",
+      "description": "생산 할당",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 작업 배정",
+      "headingEn": "Dispatching production",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.3",
+      "label": "생산 할당",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 할당",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.11",
+      "label": "6.4.11 검증",
+      "kind": "ManufacturingClause",
+      "description": "AI 출력과 실제 실행 실적, 종단 간 추적, 운전 시나리오 검증",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "검증 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.11.2",
+      "label": "KS X ISO/IEC 5338 6.4.11.2",
+      "kind": "ISO5338Clause",
+      "description": "검증 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "검증 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.11.3",
+      "label": "KS X ISO/IEC 5338 6.4.11.3",
+      "kind": "ISO5338Clause",
+      "description": "검증 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "검증 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.12",
+      "label": "6.4.12 전환",
+      "kind": "ManufacturingClause",
+      "description": "생산환경으로의 전환·복귀, 준비 상태·문서·조치 주체 인계",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "전환 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.12.2",
+      "label": "KS X ISO/IEC 5338 6.4.12.2",
+      "kind": "ISO5338Clause",
+      "description": "전환 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "전환 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.12.3",
+      "label": "KS X ISO/IEC 5338 6.4.12.3",
+      "kind": "ISO5338Clause",
+      "description": "전환 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "전환 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:5.2.4.2",
+      "label": "KS X IEC 62264-1 5.2.4.2",
+      "kind": "IEC62264Clause",
+      "description": "자원 할당 및 통제",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "자원 할당 및 통제",
+      "headingEn": "Resource allocation and control",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:5.2.4.2",
+      "label": "자원 할당 및 통제",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "자원 할당 및 통제",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.4.3.4",
+      "label": "KS X IEC 62264-1 6.4.3.4",
+      "kind": "IEC62264Clause",
+      "description": "생산 운영 계획",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 운영 계획",
+      "headingEn": "Production operations planning",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.4.3.4",
+      "label": "생산 운영 계획",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "생산 운영 계획",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "62264:6.4.3.3",
+      "label": "KS X IEC 62264-1 6.4.3.3",
+      "kind": "IEC62264Clause",
+      "description": "설비 준비·정비 후 운전 복귀",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "생산 운영 통제",
+      "headingEn": "Production operations control",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.4.3.3",
+      "label": "설비 준비·정비 후 운전 복귀",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "설비 준비·정비 후 운전 복귀",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.13",
+      "label": "6.4.13 확인",
+      "kind": "ManufacturingClause",
+      "description": "실제 생산조건에서 성능·제조성과·현장 사용 여부 확인",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "확인 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.13.2",
+      "label": "KS X ISO/IEC 5338 6.4.13.2",
+      "kind": "ISO5338Clause",
+      "description": "확인 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "확인 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.13.3",
+      "label": "KS X ISO/IEC 5338 6.4.13.3",
+      "kind": "ISO5338Clause",
+      "description": "확인 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "확인 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.14",
+      "label": "6.4.14 지속적인 확인",
+      "kind": "ManufacturingClause",
+      "description": "운영 중 제조조건 변화·데이터 드리프트·AI 성능 변화 감시",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "지속적인 확인 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.14.2",
+      "label": "KS X ISO/IEC 5338 6.4.14.2",
+      "kind": "ISO5338Clause",
+      "description": "지속적인 확인 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과",
+      "parent_process": "지속적인 확인 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.14.3",
+      "label": "KS X ISO/IEC 5338 6.4.14.3",
+      "kind": "ISO5338Clause",
+      "description": "지속적인 확인 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "활동 및 태스크",
+      "parent_process": "지속적인 확인 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.15",
+      "label": "6.4.15 운영",
+      "kind": "ManufacturingClause",
+      "description": "AI 출력 제한, 작업자 개입, 안전 운영 전환 및 복구",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "운영 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.15.2",
+      "label": "KS X ISO/IEC 5338 6.4.15.2",
+      "kind": "ISO5338Clause",
+      "description": "운영 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "운영 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.15.3",
+      "label": "KS X ISO/IEC 5338 6.4.15.3",
+      "kind": "ISO5338Clause",
+      "description": "운영 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "운영 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "V11:6.4.16",
+      "label": "6.4.16 유지 보수",
+      "kind": "ManufacturingClause",
+      "description": "AI·설비 측 조치 조정, 회복 확인, 유지보수 불가 시 폐기 판단",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "유지 보수 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.16.2",
+      "label": "KS X ISO/IEC 5338 6.4.16.2",
+      "kind": "ISO5338Clause",
+      "description": "유지 보수 프로세스의 수행 성과, 활동 및 태스크 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "수행 성과, 활동 및 태스크",
+      "parent_process": "유지 보수 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "5338:6.4.16.3",
+      "label": "KS X ISO/IEC 5338 6.4.16.3",
+      "kind": "ISO5338Clause",
+      "description": "유지 보수 프로세스에서 고려하는 AI 고유 특성 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "AI 고유의 특성",
+      "parent_process": "유지 보수 프로세스",
+      "headingSource": "5338 국문 원문"
+    },
+    {
+      "id": "62264:6.5.22",
+      "label": "KS X IEC 62264-1 6.5.22",
+      "kind": "IEC62264Clause",
+      "description": "정비 요청",
+      "source": "KS X IEC 62264-1",
+      "verified_heading": true,
+      "heading": "정비 요청",
+      "headingEn": "Maintenance requests",
+      "headingSource": "IEC 62264-1:2013 원문 절 제목 (한국어 번역)"
+    },
+    {
+      "id": "concept:6.5.22",
+      "label": "정비 요청",
+      "kind": "ConceptSummary",
+      "description": "V11에서 해당 인용조항을 설명하는 방식에 근거한 요약; 62264-1 원문 확정 정의와 구분",
+      "source": "V11 설명 요약",
+      "verified_heading": false,
+      "heading": "정비 요청",
+      "headingSource": "V11 인용 취지 요약"
+    },
+    {
+      "id": "V11:6.4.17",
+      "label": "6.4.17 폐기",
+      "kind": "ManufacturingClause",
+      "description": "5338의 폐기 프로세스 채택",
+      "source": "V11",
+      "verified_heading": true,
+      "heading": "폐기 프로세스",
+      "headingSource": "V11 초안"
+    },
+    {
+      "id": "5338:6.4.17",
+      "label": "KS X ISO/IEC 5338 6.4.17",
+      "kind": "ISO5338Clause",
+      "description": "폐기 프로세스 적용 (V11의 참조 맥락 요약)",
+      "source": "KS X ISO/IEC 5338",
+      "verified_heading": true,
+      "heading": "폐기 프로세스",
+      "parent_process": "폐기 프로세스",
+      "headingSource": "5338 국문 원문"
+    }
+  ],
+  "edges": [
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.1.1",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.1.2",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.1",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.2",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.3",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.4",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.5",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.2.6",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.1",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.2",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.3",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.4",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.5",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.6",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.7",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.3.8",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.1",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.2",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.3",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.4",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.5",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.6",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.7",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.8",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.9",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.10",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.11",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.12",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.13",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.14",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.15",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.16",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "manufacturing-v11",
+      "target": "V11:6.4.17",
+      "relation": "HAS_CLAUSE",
+      "label": "포함",
+      "short": "해당 생애주기 프로세스 절",
+      "description": "제조 AI 생애주기 지침 V11에 포함된 프로세스 절",
+      "basis": "V11 목차"
+    },
+    {
+      "source": "V11:6.1.1",
+      "target": "5338:6.1.1.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.1.1 획득 절에서 KS X ISO/IEC 5338 6.1.1.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.1.1",
+      "target": "5338:6.1.1.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.1.1 획득 절에서 KS X ISO/IEC 5338 6.1.1.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.1.1",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "관련 설비를 역할 기반 계층에 따라 식별",
+      "description": "V11 6.1.1 「획득」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 관련 설비를 역할 기반 계층에 따라 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.1",
+      "target": "62264:8.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품·자재·생산규칙 등 맥락 정보 획득",
+      "description": "V11 6.1.1 「획득」 절에서 IEC 62264-1 8.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품·자재·생산규칙 등 맥락 정보 획득. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.1",
+      "target": "62264:8.3.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산지시와 실제 생산실적의 연계 단위 설정",
+      "description": "V11 6.1.1 「획득」 절에서 IEC 62264-1 8.3.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산지시와 실제 생산실적의 연계 단위 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.3",
+      "target": "concept:5.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.3",
+      "target": "concept:8.3.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.5",
+      "target": "concept:8.3.5",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "5338:6.1.2.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.1.2 공급 절에서 KS X ISO/IEC 5338 6.1.2.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "5338:6.1.2.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.1.2 공급 절에서 KS X ISO/IEC 5338 6.1.2.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "공급 데이터가 대표하는 설비 범위 합의",
+      "description": "V11 6.1.2 「공급」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 공급 데이터가 대표하는 설비 범위 합의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "62264:8.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "데이터 대표성과 적용 제품·생산규칙 범위 설정",
+      "description": "V11 6.1.2 「공급」 절에서 IEC 62264-1 8.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 데이터 대표성과 적용 제품·생산규칙 범위 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "62264:8.3.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "실제 생산실적 기반 데이터 충분성 확인",
+      "description": "V11 6.1.2 「공급」 절에서 IEC 62264-1 8.3.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 실제 생산실적 기반 데이터 충분성 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "62264:8.3.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품 생산규칙을 기준으로 공급 성능 유효조건 설정",
+      "description": "V11 6.1.2 「공급」 절에서 IEC 62264-1 8.3.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품 생산규칙을 기준으로 공급 성능 유효조건 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.1.2",
+      "target": "62264:5.2.4.8",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "예상·실제 결과 비교 관점으로 제조 성과 평가 합의",
+      "description": "V11 6.1.2 「공급」 절에서 IEC 62264-1 5.2.4.8의 개념 또는 정보 항목을 참조합니다. 연결 목적: 예상·실제 결과 비교 관점으로 제조 성과 평가 합의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:8.3.4",
+      "target": "concept:8.3.4",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.3.2",
+      "target": "concept:8.3.3.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.8",
+      "target": "concept:5.2.4.8",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.2.1",
+      "target": "5338:6.2.1",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.2.1 생애주기 모델 관리 절에서 KS X ISO/IEC 5338 6.2.1 「생애주기 모델 관리 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.2",
+      "target": "5338:6.2.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.2.2 인프라 관리 절에서 KS X ISO/IEC 5338 6.2.2 「인프라 관리 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.2",
+      "target": "62264:5.2.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 기능 계층과 기반구조의 기능·시간 요구 연결",
+      "description": "V11 6.2.2 「인프라 관리」 절에서 IEC 62264-1 5.2.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 기능 계층과 기반구조의 기능·시간 요구 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.2",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산라인과 설비의 역할 기반 단위 식별",
+      "description": "V11 6.2.2 「인프라 관리」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산라인과 설비의 역할 기반 단위 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.2",
+      "target": "62264:5.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "센서·제어기 등 물리적 자산과의 연결관계 확인",
+      "description": "V11 6.2.2 「인프라 관리」 절에서 IEC 62264-1 5.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 센서·제어기 등 물리적 자산과의 연결관계 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.1",
+      "target": "concept:5.2.1",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.4",
+      "target": "concept:5.4",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "5338:6.2.3.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.2.3 포트폴리오 관리 절에서 KS X ISO/IEC 5338 6.2.3.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "5338:6.2.3.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.2.3 포트폴리오 관리 절에서 KS X ISO/IEC 5338 6.2.3.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 적용 단위와 제조 성과 평가 범위 비교",
+      "description": "V11 6.2.3 「포트폴리오 관리」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 적용 단위와 제조 성과 평가 범위 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "62264:5.2.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조목표와 상위 생산계획의 관계 고려",
+      "description": "V11 6.2.3 「포트폴리오 관리」 절에서 IEC 62264-1 5.2.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조목표와 상위 생산계획의 관계 고려. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "62264:5.2.4.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 운영 관리 실적과 원가 목표 검토",
+      "description": "V11 6.2.3 「포트폴리오 관리」 절에서 IEC 62264-1 5.2.4.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 운영 관리 실적과 원가 목표 검토. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "62264:6.5.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "자원·비용 목표를 투자 판단 기준에 반영",
+      "description": "V11 6.2.3 「포트폴리오 관리」 절에서 IEC 62264-1 6.5.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 자원·비용 목표를 투자 판단 기준에 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.3",
+      "target": "62264:6.5.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산실적과 실제 비용을 투자 판단에 활용",
+      "description": "V11 6.2.3 「포트폴리오 관리」 절에서 IEC 62264-1 6.5.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산실적과 실제 비용을 투자 판단에 활용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.3",
+      "target": "concept:5.2.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.1",
+      "target": "concept:5.2.4.1",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.10",
+      "target": "concept:6.5.10",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.11",
+      "target": "concept:6.5.11",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.2.4",
+      "target": "5338:6.2.4.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.2.4 인적 자원 관리 절에서 KS X ISO/IEC 5338 6.2.4.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.4",
+      "target": "5338:6.2.4.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.2.4 인적 자원 관리 절에서 KS X ISO/IEC 5338 6.2.4.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "5338:6.2.5.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.2.5 품질관리 절에서 KS X ISO/IEC 5338 6.2.5.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "5338:6.2.5.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.2.5 품질관리 절에서 KS X ISO/IEC 5338 6.2.5.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "62264:6.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조조건을 품질 정책·목표·절차에 연계",
+      "description": "V11 6.2.5 「품질관리」 절에서 IEC 62264-1 6.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조조건을 품질 정책·목표·절차에 연계. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "62264:5.2.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "안전·신뢰성·효율·품질 영향을 품질목표에 반영",
+      "description": "V11 6.2.5 「품질관리」 절에서 IEC 62264-1 5.2.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 안전·신뢰성·효율·품질 영향을 품질목표에 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "공정 제어 변경을 품질 재평가와 연결",
+      "description": "V11 6.2.5 「품질관리」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 공정 제어 변경을 품질 재평가와 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.5",
+      "target": "62264:6.5.17",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "공정 중 특채 요청과 정상적 공정 변경을 구분",
+      "description": "V11 6.2.5 「품질관리」 절에서 IEC 62264-1 6.5.17의 개념 또는 정보 항목을 참조합니다. 연결 목적: 공정 중 특채 요청과 정상적 공정 변경을 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.4.6",
+      "target": "concept:6.4.6",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.2",
+      "target": "concept:5.2.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.6",
+      "target": "concept:5.2.4.6",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.17",
+      "target": "concept:6.5.17",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.2.6",
+      "target": "5338:6.2.6.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.2.6 지식 관리 절에서 KS X ISO/IEC 5338 6.2.6.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.6",
+      "target": "5338:6.2.6.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.2.6 지식 관리 절에서 KS X ISO/IEC 5338 6.2.6.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.2.6",
+      "target": "62264:8.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품·공정·자재·설비 관계로 지식 구조화",
+      "description": "V11 6.2.6 「지식 관리」 절에서 IEC 62264-1 8.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품·공정·자재·설비 관계로 지식 구조화. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.6",
+      "target": "62264:6.5.25",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 기술 피드백으로 고장 원인 지식 축적",
+      "description": "V11 6.2.6 「지식 관리」 절에서 IEC 62264-1 6.5.25의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 기술 피드백으로 고장 원인 지식 축적. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.2.6",
+      "target": "62264:6.5.26",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품·공정 기술 피드백으로 개선 이력 관리",
+      "description": "V11 6.2.6 「지식 관리」 절에서 IEC 62264-1 6.5.26의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품·공정 기술 피드백으로 개선 이력 관리. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.5.25",
+      "target": "concept:6.5.25",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.26",
+      "target": "concept:6.5.26",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "5338:6.3.1.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.1 프로젝트 계획 절에서 KS X ISO/IEC 5338 6.3.1.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "5338:6.3.1.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.1 프로젝트 계획 절에서 KS X ISO/IEC 5338 6.3.1.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "62264:6.4.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "엔지니어링·운전 한계 관련 검토 주체 식별",
+      "description": "V11 6.3.1 「프로젝트 계획」 절에서 IEC 62264-1 6.4.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 엔지니어링·운전 한계 관련 검토 주체 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "62264:5.2.4.9",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "현장시험과 생산 일정·정지 기간 조정",
+      "description": "V11 6.3.1 「프로젝트 계획」 절에서 IEC 62264-1 5.2.4.9의 개념 또는 정보 항목을 참조합니다. 연결 목적: 현장시험과 생산 일정·정지 기간 조정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "62264:8.3.2.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "현장시험에 필요한 생산능력 확보 가능성 검토",
+      "description": "V11 6.3.1 「프로젝트 계획」 절에서 IEC 62264-1 8.3.2.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 현장시험에 필요한 생산능력 확보 가능성 검토. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.1",
+      "target": "62264:8.3.2.9",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 일정과 생산능력 계획의 간섭 검토",
+      "description": "V11 6.3.1 「프로젝트 계획」 절에서 IEC 62264-1 8.3.2.9의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 일정과 생산능력 계획의 간섭 검토. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.4.3.2",
+      "target": "concept:6.4.3.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.9",
+      "target": "concept:5.2.4.9",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.2.3",
+      "target": "concept:8.3.2.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.2.9",
+      "target": "concept:8.3.2.9",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "5338:6.3.2.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.2 프로젝트 평가 및 통제 절에서 KS X ISO/IEC 5338 6.3.2.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "5338:6.3.2.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.2 프로젝트 평가 및 통제 절에서 KS X ISO/IEC 5338 6.3.2.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "62264:6.4.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·공정 변경과 AI 성능 영향 평가",
+      "description": "V11 6.3.2 「프로젝트 평가 및 통제」 절에서 IEC 62264-1 6.4.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·공정 변경과 AI 성능 영향 평가. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "62264:6.5.21",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품·공정 정의 변경 요청과 적용 이력 구분",
+      "description": "V11 6.3.2 「프로젝트 평가 및 통제」 절에서 IEC 62264-1 6.5.21의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품·공정 정의 변경 요청과 적용 이력 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "62264:6.5.23",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 수행 결과를 프로젝트 평가에 활용",
+      "description": "V11 6.3.2 「프로젝트 평가 및 통제」 절에서 IEC 62264-1 6.5.23의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 수행 결과를 프로젝트 평가에 활용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.2",
+      "target": "62264:7.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 운영의 변경·형상 기록 참조",
+      "description": "V11 6.3.2 「프로젝트 평가 및 통제」 절에서 IEC 62264-1 7.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 운영의 변경·형상 기록 참조. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.5.21",
+      "target": "concept:6.5.21",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.23",
+      "target": "concept:6.5.23",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:7.3",
+      "target": "concept:7.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "5338:6.3.3.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.3 의사결정 관리 절에서 KS X ISO/IEC 5338 6.3.3.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "5338:6.3.3.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.3 의사결정 관리 절에서 KS X ISO/IEC 5338 6.3.3.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "62264:6.5.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "대안별 생산 실적·자원 사용·비용 비교",
+      "description": "V11 6.3.3 「의사결정 관리」 절에서 IEC 62264-1 6.5.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 대안별 생산 실적·자원 사용·비용 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "62264:6.5.13",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "대안별 품질 결과와 위험·효과 비교",
+      "description": "V11 6.3.3 「의사결정 관리」 절에서 IEC 62264-1 6.5.13의 개념 또는 정보 항목을 참조합니다. 연결 목적: 대안별 품질 결과와 위험·효과 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "62264:8.3.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산량·소요시간·납기 이행 등의 비교항목 설정",
+      "description": "V11 6.3.3 「의사결정 관리」 절에서 IEC 62264-1 8.3.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산량·소요시간·납기 이행 등의 비교항목 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.3",
+      "target": "62264:6.5.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "대안의 비용 허용조건·선정기준 설정",
+      "description": "V11 6.3.3 「의사결정 관리」 절에서 IEC 62264-1 6.5.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 대안의 비용 허용조건·선정기준 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.5.13",
+      "target": "concept:6.5.13",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.4.7",
+      "target": "concept:8.3.4.7",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "5338:6.3.4.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.4 위험 관리 절에서 KS X ISO/IEC 5338 6.3.4.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "5338:6.3.4.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.4 위험 관리 절에서 KS X ISO/IEC 5338 6.3.4.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:5.2.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 출력이 사용되는 제조 기능 수준 파악",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 5.2.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 출력이 사용되는 제조 기능 수준 파악. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 출력의 자동 보정·현장 의사결정 경로 구분",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 출력의 자동 보정·현장 의사결정 경로 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:5.2.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "안전·신뢰성·품질 영향을 위험 평가에 반영",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 5.2.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 안전·신뢰성·품질 영향을 위험 평가에 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:6.5.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "자원 낭비와 생산 비용 등 영향 추정",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 6.5.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 자원 낭비와 생산 비용 등 영향 추정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:6.5.13",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "품질 영향과 불량 관련 손실 고려",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 6.5.13의 개념 또는 정보 항목을 참조합니다. 연결 목적: 품질 영향과 불량 관련 손실 고려. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:6.4.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·공정 안전 운전 한계 및 제약조건 참조",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 6.4.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·공정 안전 운전 한계 및 제약조건 참조. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.4",
+      "target": "62264:5.2.4.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "작업자 개입·대체 운전 절차를 작업표준과 연결",
+      "description": "V11 6.3.4 「위험 관리」 절에서 IEC 62264-1 5.2.4.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 작업자 개입·대체 운전 절차를 작업표준과 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.4.10",
+      "target": "concept:5.2.4.10",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "5338:6.3.5.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.5 형상 관리 절에서 KS X ISO/IEC 5338 6.3.5.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "5338:6.3.5.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.5 형상 관리 절에서 KS X ISO/IEC 5338 6.3.5.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "62264:8.3.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "레시피·표준작업절차 등 생산규칙 형상 관리",
+      "description": "V11 6.3.5 「형상 관리」 절에서 IEC 62264-1 8.3.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 레시피·표준작업절차 등 생산규칙 형상 관리. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "62264:5.2.4.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설계변경 통지와 작업지침 버전을 추적",
+      "description": "V11 6.3.5 「형상 관리」 절에서 IEC 62264-1 5.2.4.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설계변경 통지와 작업지침 버전을 추적. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비의 역할 기반 식별 단위 설정",
+      "description": "V11 6.3.5 「형상 관리」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비의 역할 기반 식별 단위 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "62264:5.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "물리적 설비 교체를 형상 변경으로 구분",
+      "description": "V11 6.3.5 「형상 관리」 절에서 IEC 62264-1 5.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 물리적 설비 교체를 형상 변경으로 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.5",
+      "target": "62264:6.4.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·공정의 수정 요청과 검증 영향 평가",
+      "description": "V11 6.3.5 「형상 관리」 절에서 IEC 62264-1 6.4.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·공정의 수정 요청과 검증 영향 평가. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "5338:6.3.6.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.6 정보 관리 절에서 KS X ISO/IEC 5338 6.3.6.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "5338:6.3.6.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.6 정보 관리 절에서 KS X ISO/IEC 5338 6.3.6.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "62264:7.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·자재·인력 상태와 기록을 정보 관리에 포함",
+      "description": "V11 6.3.6 「정보 관리」 절에서 IEC 62264-1 7.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·자재·인력 상태와 기록을 정보 관리에 포함. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "62264:5.2.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "평가 이력과 생산 추적 기록 연결",
+      "description": "V11 6.3.6 「정보 관리」 절에서 IEC 62264-1 5.2.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: 평가 이력과 생산 추적 기록 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "62264:5.2.4.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "작업지침·레시피·개정 버전과 평가 기록 연결",
+      "description": "V11 6.3.6 「정보 관리」 절에서 IEC 62264-1 5.2.4.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 작업지침·레시피·개정 버전과 평가 기록 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "62264:8.3.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "계획 자원과 실제 사용 자원의 차이 기록",
+      "description": "V11 6.3.6 「정보 관리」 절에서 IEC 62264-1 8.3.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 계획 자원과 실제 사용 자원의 차이 기록. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.6",
+      "target": "62264:8.3.4.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산이력과 AI 평가·형상 기록 연결",
+      "description": "V11 6.3.6 「정보 관리」 절에서 IEC 62264-1 8.3.4.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산이력과 AI 평가·형상 기록 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:7.1",
+      "target": "concept:7.1",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.7",
+      "target": "concept:5.2.4.7",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.4.2",
+      "target": "concept:8.3.4.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.7",
+      "target": "5338:6.3.7",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.3.7 측정 절에서 KS X ISO/IEC 5338 6.3.7 「측정 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.7",
+      "target": "62264:5.2.4.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비 운전·센서 데이터와 AI 측정값 동시 확인",
+      "description": "V11 6.3.7 「측정」 절에서 IEC 62264-1 5.2.4.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비 운전·센서 데이터와 AI 측정값 동시 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.7",
+      "target": "62264:8.3.2.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비 상태·사용 변화의 측정 근거 확보",
+      "description": "V11 6.3.7 「측정」 절에서 IEC 62264-1 8.3.2.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비 상태·사용 변화의 측정 근거 확보. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.7",
+      "target": "62264:6.5.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "원자재·에너지·설비 사용 및 생산 실적 변화 측정",
+      "description": "V11 6.3.7 「측정」 절에서 IEC 62264-1 6.5.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 원자재·에너지·설비 사용 및 생산 실적 변화 측정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.4.4",
+      "target": "concept:5.2.4.4",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:8.3.2.6",
+      "target": "concept:8.3.2.6",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.3.8",
+      "target": "5338:6.3.8.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.3.8 품질보증 절에서 KS X ISO/IEC 5338 6.3.8.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.8",
+      "target": "5338:6.3.8.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.3.8 품질보증 절에서 KS X ISO/IEC 5338 6.3.8.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.3.8",
+      "target": "62264:5.2.4.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "품질시험·SPC 기록으로 희소 불량 사례 식별",
+      "description": "V11 6.3.8 「품질보증」 절에서 IEC 62264-1 5.2.4.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 품질시험·SPC 기록으로 희소 불량 사례 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.8",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "공정 경보·이벤트를 이상 사례 출처로 활용",
+      "description": "V11 6.3.8 「품질보증」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 공정 경보·이벤트를 이상 사례 출처로 활용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.3.8",
+      "target": "62264:5.2.4.12",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 이력으로 희소 고장 사례 식별",
+      "description": "V11 6.3.8 「품질보증」 절에서 IEC 62264-1 5.2.4.12의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 이력으로 희소 고장 사례 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.4.5",
+      "target": "concept:5.2.4.5",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.12",
+      "target": "concept:5.2.4.12",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.1",
+      "target": "5338:6.4.1.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.1 비즈니스 또는 임무 분석 절에서 KS X ISO/IEC 5338 6.4.1.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.1",
+      "target": "5338:6.4.1.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.1 비즈니스 또는 임무 분석 절에서 KS X ISO/IEC 5338 6.4.1.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.1",
+      "target": "62264:7.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "개선 대상 제조 운영 영역 식별",
+      "description": "V11 6.4.1 「비즈니스 또는 임무 분석」 절에서 IEC 62264-1 7.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 개선 대상 제조 운영 영역 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.1",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 적용 설비 범위와 성과 측정 범위 연결",
+      "description": "V11 6.4.1 「비즈니스 또는 임무 분석」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 적용 설비 범위와 성과 측정 범위 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.1",
+      "target": "62264:6.5.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "원가·자원 목표에서 개선할 제조 성과 정의",
+      "description": "V11 6.4.1 「비즈니스 또는 임무 분석」 절에서 IEC 62264-1 6.5.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 원가·자원 목표에서 개선할 제조 성과 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:7.2",
+      "target": "concept:7.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "5338:6.4.2.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.2 이해관계자 필요 및 요구사항 정의 절에서 KS X ISO/IEC 5338 6.4.2.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "5338:6.4.2.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.2 이해관계자 필요 및 요구사항 정의 절에서 KS X ISO/IEC 5338 6.4.2.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:6.5.14",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품 속성과 고객 요구조건 정의",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 6.5.14의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품 속성과 고객 요구조건 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:6.5.15",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "레시피·자재·설비·공정 요구사항 반영",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 6.5.15의 개념 또는 정보 항목을 참조합니다. 연결 목적: 레시피·자재·설비·공정 요구사항 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:6.5.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조목표와 원가·자원 성과 측정요소 연결",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 6.5.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조목표와 원가·자원 성과 측정요소 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:6.5.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "실제 생산실적을 제조 성과 기준으로 사용",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 6.5.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 실제 생산실적을 제조 성과 기준으로 사용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:6.5.13",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "품질 결과를 성공조건·KPI로 반영",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 6.5.13의 개념 또는 정보 항목을 참조합니다. 연결 목적: 품질 결과를 성공조건·KPI로 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.2",
+      "target": "62264:8.3.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산량·소요시간·생산 요청 이행 지표 정의",
+      "description": "V11 6.4.2 「이해관계자 필요 및 요구사항 정의」 절에서 IEC 62264-1 8.3.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산량·소요시간·생산 요청 이행 지표 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.5.14",
+      "target": "concept:6.5.14",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.5.15",
+      "target": "concept:6.5.15",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "5338:6.4.3.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.3 시스템 요구사항 정의 절에서 KS X ISO/IEC 5338 6.4.3.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "5338:6.4.3.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.3 시스템 요구사항 정의 절에서 KS X ISO/IEC 5338 6.4.3.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:5.2.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 기능의 운영 시간대별 응답시간 요구 설정",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 5.2.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 기능의 운영 시간대별 응답시간 요구 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:5.2.4.8",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산 사이클타임에 따른 처리지연 영향 검토",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 5.2.4.8의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산 사이클타임에 따른 처리지연 영향 검토. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:8.3.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "실제 생산구간 소요시간과 요구 응답시간 비교",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 8.3.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: 실제 생산구간 소요시간과 요구 응답시간 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:8.3.2.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비 가용성과 생산능력 영향 반영",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 8.3.2.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비 가용성과 생산능력 영향 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:7.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "현장 역할과 권한·책임의 배분 근거 확보",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 7.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 현장 역할과 권한·책임의 배분 근거 확보. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "자동 실행·작업자 승인·추천 경로 구분",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 자동 실행·작업자 승인·추천 경로 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:8.3.2.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "수동·반자동·자동 운전 구간별 개입 정의",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 8.3.2.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 수동·반자동·자동 운전 구간별 개입 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.3",
+      "target": "62264:5.2.4.11",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "승인·개입 담당자의 자격 기준 고려",
+      "description": "V11 6.4.3 「시스템 요구사항 정의」 절에서 IEC 62264-1 5.2.4.11의 개념 또는 정보 항목을 참조합니다. 연결 목적: 승인·개입 담당자의 자격 기준 고려. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:8.3.2.10",
+      "target": "concept:8.3.2.10",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:5.2.4.11",
+      "target": "concept:5.2.4.11",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.4",
+      "target": "5338:6.4.4",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.4 시스템 아키텍처 정의 절에서 KS X ISO/IEC 5338 6.4.4 「시스템 아키텍처 정의 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.4",
+      "target": "62264:5.2.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI·OT·공정 기능 수준에 따른 기능 배치",
+      "description": "V11 6.4.4 「시스템 아키텍처 정의」 절에서 IEC 62264-1 5.2.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI·OT·공정 기능 수준에 따른 기능 배치. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.4",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "아키텍처의 설비 계층·역할 식별",
+      "description": "V11 6.4.4 「시스템 아키텍처 정의」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 아키텍처의 설비 계층·역할 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.4",
+      "target": "62264:6.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 기능 간 정보 흐름과 인터페이스 정의",
+      "description": "V11 6.4.4 「시스템 아키텍처 정의」 절에서 IEC 62264-1 6.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 기능 간 정보 흐름과 인터페이스 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.3",
+      "target": "concept:6.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.5",
+      "target": "5338:6.4.5",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.5 디자인 정의 절에서 KS X ISO/IEC 5338 6.4.5 「디자인 정의 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.6",
+      "target": "5338:6.4.6",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.6 시스템 분석 절에서 KS X ISO/IEC 5338 6.4.6 「시스템 분석 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.7",
+      "target": "5338:6.4.7.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "지식 획득의 기존 수행 성과 적용",
+      "description": "V11 6.4.7 지식 획득 절에서 KS X ISO/IEC 5338 6.4.7.2 「수행 성과」을 참조한다. 연결 내용: 지식 획득의 기존 수행 성과 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.7",
+      "target": "5338:6.4.7.3",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "지식 획득의 기존 활동·태스크 적용",
+      "description": "V11 6.4.7 지식 획득 절에서 KS X ISO/IEC 5338 6.4.7.3 「활동 및 태스크」을 참조한다. 연결 내용: 지식 획득의 기존 활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.7",
+      "target": "62264:8.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품정의 정보로 설비·제품·공정 지식 획득",
+      "description": "V11 6.4.7 「지식 획득」 절에서 IEC 62264-1 8.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품정의 정보로 설비·제품·공정 지식 획득. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.7",
+      "target": "62264:5.2.4.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "SPC·SQC 결과와 불량 원인 지식 연결",
+      "description": "V11 6.4.7 「지식 획득」 절에서 IEC 62264-1 5.2.4.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: SPC·SQC 결과와 불량 원인 지식 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.7",
+      "target": "62264:5.2.4.12",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 사건 이력으로 고장 메커니즘 지식 확보",
+      "description": "V11 6.4.7 「지식 획득」 절에서 IEC 62264-1 5.2.4.12의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 사건 이력으로 고장 메커니즘 지식 확보. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "5338:6.4.8.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 수행 성과를 적용하고 제조 맥락 추적성 성과 추가",
+      "description": "V11 6.4.8 AI 데이터 공학 절에서 KS X ISO/IEC 5338 6.4.8.2 「수행 성과」을 참조한다. 연결 내용: 기존 수행 성과를 적용하고 제조 맥락 추적성 성과 추가.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "5338:6.4.8.3",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "기존 활동·태스크를 적용하고 제조 데이터 맥락화 활동 추가",
+      "description": "V11 6.4.8 AI 데이터 공학 절에서 KS X ISO/IEC 5338 6.4.8.3 「활동 및 태스크」을 참조한다. 연결 내용: 기존 활동·태스크를 적용하고 제조 데이터 맥락화 활동 추가.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:8.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품정의 정보로 맥락 구성요소 정의",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 8.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품정의 정보로 맥락 구성요소 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:8.3.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "세그먼트 요구·실적을 이용해 데이터 생성 맥락 연결",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 8.3.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 세그먼트 요구·실적을 이용해 데이터 생성 맥락 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "데이터를 설비의 역할 기반 계층에 귀속",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 데이터를 설비의 역할 기반 계층에 귀속. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:8.3.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산실적 분포로 제조조건별 데이터 대표성 평가",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 8.3.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산실적 분포로 제조조건별 데이터 대표성 평가. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:5.2.4.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "품질시험 결과로 희소 불량 데이터 확보 여부 확인",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 5.2.4.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 품질시험 결과로 희소 불량 데이터 확보 여부 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "경보·이벤트 기록으로 이상 데이터 식별",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 경보·이벤트 기록으로 이상 데이터 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.8",
+      "target": "62264:5.2.4.12",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 이력으로 희소 고장 데이터 식별",
+      "description": "V11 6.4.8 「AI 데이터 공학」 절에서 IEC 62264-1 5.2.4.12의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 이력으로 희소 고장 데이터 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.9",
+      "target": "5338:6.4.9",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.9 구현 절에서 KS X ISO/IEC 5338 6.4.9 「구현 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.10",
+      "target": "5338:6.4.10",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.10 통합 절에서 KS X ISO/IEC 5338 6.4.10 「통합 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.10",
+      "target": "62264:5.2.4.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·공정 입력 데이터 수집 경로 통합",
+      "description": "V11 6.4.10 「통합」 절에서 IEC 62264-1 5.2.4.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·공정 입력 데이터 수집 경로 통합. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.10",
+      "target": "62264:5.2.4.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 출력의 생산 지시·할당 경로 구현",
+      "description": "V11 6.4.10 「통합」 절에서 IEC 62264-1 5.2.4.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 출력의 생산 지시·할당 경로 구현. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.10",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 출력의 자동 보정·작업자 지원 방식 구현",
+      "description": "V11 6.4.10 「통합」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 출력의 자동 보정·작업자 지원 방식 구현. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.4.3",
+      "target": "concept:5.2.4.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "5338:6.4.11.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.11 검증 절에서 KS X ISO/IEC 5338 6.4.11.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "5338:6.4.11.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.11 검증 절에서 KS X ISO/IEC 5338 6.4.11.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "62264:8.3.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 출력 지시와 실제 자원·생산 실적 비교",
+      "description": "V11 6.4.11 「검증」 절에서 IEC 62264-1 8.3.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 출력 지시와 실제 자원·생산 실적 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "62264:5.2.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 입력부터 공정 결과까지 종단 간 추적 검증",
+      "description": "V11 6.4.11 「검증」 절에서 IEC 62264-1 5.2.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 입력부터 공정 결과까지 종단 간 추적 검증. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "62264:5.2.1",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 기능 계층별 AI 출력 전달 경로 식별",
+      "description": "V11 6.4.11 「검증」 절에서 IEC 62264-1 5.2.1의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 기능 계층별 AI 출력 전달 경로 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "자동 보정·경보·의사결정 지원 경로 검증",
+      "description": "V11 6.4.11 「검증」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 자동 보정·경보·의사결정 지원 경로 검증. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.11",
+      "target": "62264:8.3.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품별 생산규칙에 따른 검증 시나리오 설정",
+      "description": "V11 6.4.11 「검증」 절에서 IEC 62264-1 8.3.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품별 생산규칙에 따른 검증 시나리오 설정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "5338:6.4.12.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 전환 성과와 형상·설정 동시 전환·복귀 성과 연결",
+      "description": "V11 6.4.12 전환 절에서 KS X ISO/IEC 5338 6.4.12.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기존 전환 성과와 형상·설정 동시 전환·복귀 성과 연결.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "5338:6.4.12.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.12 전환 절에서 KS X ISO/IEC 5338 6.4.12.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:5.2.4.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "작업지침·레시피·표준작업절차의 개정·관리",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 5.2.4.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 작업지침·레시피·표준작업절차의 개정·관리. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:8.3.5",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "전환 적용 형상과 생산실적·자원 사용 확인",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 8.3.5의 개념 또는 정보 항목을 참조합니다. 연결 목적: 전환 적용 형상과 생산실적·자원 사용 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:8.3.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "전환 후 적용 제품·생산규칙 일치 여부 확인",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 8.3.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 전환 후 적용 제품·생산규칙 일치 여부 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:5.2.4.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "전환 준비에 필요한 인력·설비·자재 할당",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 5.2.4.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 전환 준비에 필요한 인력·설비·자재 할당. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:5.2.4.9",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산일정과 전환·복귀 시점 조정",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 5.2.4.9의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산일정과 전환·복귀 시점 조정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:6.4.3.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제조 운영 계획과 정지·재개 순서 조정",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 6.4.3.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제조 운영 계획과 정지·재개 순서 조정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:6.4.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비 정지·정비 후 운영 복귀 조건 활용",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 6.4.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비 정지·정비 후 운영 복귀 조건 활용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.12",
+      "target": "62264:5.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "확대 적용 대상 설비·제품·운전조건 범위 식별",
+      "description": "V11 6.4.12 「전환」 절에서 IEC 62264-1 5.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 확대 적용 대상 설비·제품·운전조건 범위 식별. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:5.2.4.2",
+      "target": "concept:5.2.4.2",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.4.3.4",
+      "target": "concept:6.4.3.4",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "62264:6.4.3.3",
+      "target": "concept:6.4.3.3",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.13",
+      "target": "5338:6.4.13.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.13 확인 절에서 KS X ISO/IEC 5338 6.4.13.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.13",
+      "target": "5338:6.4.13.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.13 확인 절에서 KS X ISO/IEC 5338 6.4.13.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.13",
+      "target": "62264:8.3.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "실제 생산조건·생산실적을 확인 기간에 기록",
+      "description": "V11 6.4.13 「확인」 절에서 IEC 62264-1 8.3.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 실제 생산조건·생산실적을 확인 기간에 기록. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.13",
+      "target": "62264:5.2.4.8",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "예상 대비 실제 결과로 제조 성과 확인",
+      "description": "V11 6.4.13 「확인」 절에서 IEC 62264-1 5.2.4.8의 개념 또는 정보 항목을 참조합니다. 연결 목적: 예상 대비 실제 결과로 제조 성과 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.13",
+      "target": "62264:5.2.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 결과·작업자 조치·현장 결과 추적 기록",
+      "description": "V11 6.4.13 「확인」 절에서 IEC 62264-1 5.2.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 결과·작업자 조치·현장 결과 추적 기록. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "5338:6.4.14.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 지속 확인 성과와 제조조건 변경 시 재평가 성과 연결",
+      "description": "V11 6.4.14 지속적인 확인 절에서 KS X ISO/IEC 5338 6.4.14.2 「수행 성과」을 참조한다. 연결 내용: 기존 지속 확인 성과와 제조조건 변경 시 재평가 성과 연결.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "5338:6.4.14.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "기존 확인 활동에 제조조건 변경 모니터링 활동 추가",
+      "description": "V11 6.4.14 지속적인 확인 절에서 KS X ISO/IEC 5338 6.4.14.3 「활동 및 태스크」을 참조한다. 연결 내용: 기존 확인 활동에 제조조건 변경 모니터링 활동 추가.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:6.5.21",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "제품·공정 정의의 변경 요청과 적용 이력 구분",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 6.5.21의 개념 또는 정보 항목을 참조합니다. 연결 목적: 제품·공정 정의의 변경 요청과 적용 이력 구분. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:6.5.17",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "공정 중 특채와 자재 변경 감시",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 6.5.17의 개념 또는 정보 항목을 참조합니다. 연결 목적: 공정 중 특채와 자재 변경 감시. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:8.3.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "생산 품종·작업자 구성 변화 파악",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 8.3.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 생산 품종·작업자 구성 변화 파악. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:5.2.4.4",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비·공정 실시간 데이터 변화 감시",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 5.2.4.4의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비·공정 실시간 데이터 변화 감시. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:8.3.2.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "설비 상태·사용 이력의 변화 기록",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 8.3.2.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 설비 상태·사용 이력의 변화 기록. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:6.5.25",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비·교체 기술 피드백과 AI 성능 변화 비교",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 6.5.25의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비·교체 기술 피드백과 AI 성능 변화 비교. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.14",
+      "target": "62264:5.2.4.8",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "과거·예상 결과 비교로 변화와 성능 저하 점검",
+      "description": "V11 6.4.14 「지속적인 확인」 절에서 IEC 62264-1 5.2.4.8의 개념 또는 정보 항목을 참조합니다. 연결 목적: 과거·예상 결과 비교로 변화와 성능 저하 점검. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "5338:6.4.15.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.15 운영 절에서 KS X ISO/IEC 5338 6.4.15.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "5338:6.4.15.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.15 운영 절에서 KS X ISO/IEC 5338 6.4.15.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "62264:5.2.4.6",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "경보·이벤트로 작업자 개입 조건 정의",
+      "description": "V11 6.4.15 「운영」 절에서 IEC 62264-1 5.2.4.6의 개념 또는 정보 항목을 참조합니다. 연결 목적: 경보·이벤트로 작업자 개입 조건 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "62264:5.2.4.10",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "대체 운전·시정조치 절차를 작업지침에 반영",
+      "description": "V11 6.4.15 「운영」 절에서 IEC 62264-1 5.2.4.10의 개념 또는 정보 항목을 참조합니다. 연결 목적: 대체 운전·시정조치 절차를 작업지침에 반영. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "62264:6.4.3.3",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 후 안전한 정상 운전 복귀 기준 확인",
+      "description": "V11 6.4.15 「운영」 절에서 IEC 62264-1 6.4.3.3의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 후 안전한 정상 운전 복귀 기준 확인. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "62264:6.5.23",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 응답·완료 정보를 재개 판단 근거로 활용",
+      "description": "V11 6.4.15 「운영」 절에서 IEC 62264-1 6.5.23의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 응답·완료 정보를 재개 판단 근거로 활용. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.15",
+      "target": "62264:5.2.4.7",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "운영 중 개입·복구·인수인계 이력 추적",
+      "description": "V11 6.4.15 「운영」 절에서 IEC 62264-1 5.2.4.7의 개념 또는 정보 항목을 참조합니다. 연결 목적: 운영 중 개입·복구·인수인계 이력 추적. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "5338:6.4.16.2",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기본 수행 성과·활동·태스크 적용",
+      "description": "V11 6.4.16 유지 보수 절에서 KS X ISO/IEC 5338 6.4.16.2 「수행 성과, 활동 및 태스크」을 참조한다. 연결 내용: 기본 수행 성과·활동·태스크 적용.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "5338:6.4.16.3",
+      "relation": "CONSIDERS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "채택·구체화",
+      "short": "AI 고유 특성에 제조 AI 고려사항 보완",
+      "description": "V11 6.4.16 유지 보수 절에서 KS X ISO/IEC 5338 6.4.16.3 「AI 고유의 특성」을 참조한다. 연결 내용: AI 고유 특성에 제조 AI 고려사항 보완.",
+      "basis": "V11 명시적 5338 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "62264:5.2.4.12",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "성능 저하 전후 설비 정비·교체 이력 검토",
+      "description": "V11 6.4.16 「유지 보수」 절에서 IEC 62264-1 5.2.4.12의 개념 또는 정보 항목을 참조합니다. 연결 목적: 성능 저하 전후 설비 정비·교체 이력 검토. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "62264:6.4.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "AI 측 조치와 설비·공정 엔지니어링 조정",
+      "description": "V11 6.4.16 「유지 보수」 절에서 IEC 62264-1 6.4.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: AI 측 조치와 설비·공정 엔지니어링 조정. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "62264:8.3.3.2",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "성능 회복 확인에 사용할 제품·생산규칙 정의",
+      "description": "V11 6.4.16 「유지 보수」 절에서 IEC 62264-1 8.3.3.2의 개념 또는 정보 항목을 참조합니다. 연결 목적: 성능 회복 확인에 사용할 제품·생산규칙 정의. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "62264:6.5.22",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 요청과 유지보수 조치 요청 추적",
+      "description": "V11 6.4.16 「유지 보수」 절에서 IEC 62264-1 6.5.22의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 요청과 유지보수 조치 요청 추적. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "V11:6.4.16",
+      "target": "62264:6.5.23",
+      "relation": "REFERENCES",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "참조·활용",
+      "short": "정비 응답·완료 결과 및 이력 연결",
+      "description": "V11 6.4.16 「유지 보수」 절에서 IEC 62264-1 6.5.23의 개념 또는 정보 항목을 참조합니다. 연결 목적: 정비 응답·완료 결과 및 이력 연결. 이 연결은 V11 본문의 참조 취지를 정리한 것이며 IEC 원문에 없는 의무를 추가하지 않습니다.",
+      "basis": "V11 명시적 62264-1 조항 참조"
+    },
+    {
+      "source": "62264:6.5.22",
+      "target": "concept:6.5.22",
+      "relation": "DESCRIBED_IN_V11_AS",
+      "provenance": "V11 인용조항의 개념 요약",
+      "label": "인용 의미",
+      "short": "V11에서 활용한 개념",
+      "description": "해당 IEC 조항이 V11에서 어떤 제조 개념으로 인용되었는지 보여준다. IEC 규정 문장을 동일하게 인용한 것이 아니다.",
+      "basis": "V11 인용 설명"
+    },
+    {
+      "source": "V11:6.4.17",
+      "target": "5338:6.4.17",
+      "relation": "ADOPTS",
+      "provenance": "V11 문서의 명시적 인용",
+      "label": "기존 프로세스 적용",
+      "short": "기존 프로세스의 목적·수행 성과·활동·태스크 채택",
+      "description": "V11 6.4.17 폐기 절에서 KS X ISO/IEC 5338 6.4.17 「폐기 프로세스」을 참조한다. 연결 내용: 기존 프로세스의 목적·수행 성과·활동·태스크 채택.",
+      "basis": "V11 명시적 5338 조항 참조"
+    }
+  ]
+}</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('graph-data').textContent);
+const CLAUSES=DATA.clauses, NODES=Object.fromEntries(DATA.nodes.map(n=>[n.id,n]));
+const ALL_EDGES=DATA.edges;
+const GROUPS={'6.1':'6.1 합의 프로세스','6.2':'6.2 조직의 프로젝트 지원 프로세스','6.3':'6.3 기술 관리 프로세스','6.4':'6.4 기술 프로세스'};
+let active='6.4.8',focusKey='',zoom=.78,graphW=2220,graphH=650;
+const HTML=x=>String(x??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+function edgeKey(e){return e.source+'|'+e.target;}
+function current(){return CLAUSES.find(c=>c.clause===active)}
+function refs(){return ALL_EDGES.filter(e=>e.source==='V11:'+active && (e.target.startsWith('5338:')||e.target.startsWith('62264:')))}
+function chooseClause(code){active=code;focusKey='';renderList();renderAll();const v=document.getElementById('graphViewport');v.scrollLeft=0;v.scrollTop=0;}
+function renderList(){let q=document.getElementById('search').value.toLocaleLowerCase().trim(),box=document.getElementById('clauseList');box.replaceChildren();let last='',count=0;
+ for(const c of CLAUSES){const related=[...c.iso5338.map(x=>'5338 '+x),...c.iec62264.map(x=>'62264 '+x)].join(' ');if(![c.clause,c.title,c.description,related].join(' ').toLocaleLowerCase().includes(q))continue;count++;if(last!==c.group){last=c.group;const div=document.createElement('div');div.className='group-label';div.textContent=GROUPS[c.group];box.appendChild(div)}
+ const b=document.createElement('button');b.className='item'+(c.clause===active?' active':'');b.type='button';b.textContent=c.clause+' '+c.title;const mini=document.createElement('small');mini.textContent='5338 '+c.iso5338.length+' · 62264 '+c.iec62264.length;b.appendChild(mini);b.onclick=()=>chooseClause(c.clause);box.appendChild(b)} if(!count){const el=document.createElement('div');el.className='empty';el.textContent='일치하는 절이 없습니다.';box.appendChild(el)}}
+function setFocus(obj){focusKey=obj.type==='edge'?edgeKey(obj.record):obj.record.id;let text='';if(obj.type==='edge'){const e=obj.record;const n=NODES[e.target];const std=e.target.startsWith('5338:')?'KS X ISO/IEC 5338':'IEC 62264-1';text=`<strong>${HTML(std+' '+e.target.split(':')[1])} · ${HTML(n.heading||n.label)}</strong><div style="margin-top:5px">${HTML(e.description)}</div><div class="meta">관계: ${HTML(e.label)} · 근거: ${HTML(e.basis||'V11')} · 방향: V11 ${HTML(active)} → ${HTML(std)}</div>`;
+ }else{const n=obj.record;if(!n)return;const isIso=n.kind==='ISO5338Clause',isIec=n.kind==='IEC62264Clause';text=`<strong>${HTML(n.label)}</strong><div style="margin-top:5px">${HTML(n.heading||'')} ${n.heading&&n.description?'· ':''}${HTML(n.description||'')}</div>`;
+ if(isIso)text+=`<div class="meta">${HTML(n.parent_process||'')} · 국문 원문 절 제목 확인</div>`;
+ else if(isIec)text+=`<div class="meta">${HTML(n.headingSource)}${n.headingEn?' · '+HTML(n.headingEn):''}${n.parentHeading?' · 상위 절: '+HTML(n.parentHeading):''}</div>`;
+ else text+=`<div class="meta">출처: ${HTML(n.headingSource||n.source||'V11')}</div>`;}
+ document.getElementById('details').innerHTML=text;
+ document.querySelectorAll('.edge-g').forEach(el=>el.classList.toggle('active',el.getAttribute('data-key')===focusKey));document.querySelectorAll('.node-g').forEach(el=>el.classList.toggle('active',el.getAttribute('data-key')===focusKey));document.querySelectorAll('#refRows tr').forEach(el=>el.classList.toggle('active',el.dataset.key===focusKey));}
+function renderIntro(){const c=current();document.getElementById('crumb').textContent=GROUPS[c.group];document.getElementById('mainTitle').textContent=c.clause+' '+c.title;document.getElementById('mainDesc').textContent=c.description;document.getElementById('badges').innerHTML=`<span>5338 ${c.iso5338.length}개 절</span><span>62264-1 ${c.iec62264.length}개 절</span><span>${refs().length}개 직접 참조</span>`;document.getElementById('tableCount').textContent=refs().length+'개 직접 참조';}
+function renderTable(){const tbody=document.getElementById('refRows');tbody.replaceChildren();const links=refs();for(const e of links){const n=NODES[e.target],isIso=e.target.startsWith('5338:'),tr=document.createElement('tr');tr.dataset.key=edgeKey(e);const kind=isIso?'iso':'iec';const code=e.target.split(':')[1];const titleState=isIso?'5338 국문 원문':'62264-1 원문 제목 확인 (한글 번역)';tr.innerHTML=`<td><span class="refbadge ${kind}">${isIso?'KS X ISO/IEC 5338':'IEC 62264-1'}</span></td><td><span class="refcode">${HTML(code)}</span></td><td><strong>${HTML(n.heading||n.label)}</strong><span class="refnote">${HTML(titleState)}</span>${(!isIso&&n.headingEn)?'<span class="refnote">원문: '+HTML(n.headingEn)+'</span>':''}</td><td><span class="relation">${HTML(e.short||e.label)}</span><span class="refnote">${HTML(e.label)} · V11 ${HTML(active)} 기준</span></td>`;tr.onclick=()=>setFocus({type:'edge',record:e});tbody.appendChild(tr)}if(!links.length)tbody.innerHTML='<tr><td colspan="4">직접 참조 조항이 없습니다.</td></tr>';}
+const NS='http://www.w3.org/2000/svg';const SVG=(tag,attrs={},txt)=>{const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));if(txt!==undefined)el.textContent=txt;return el};
+const C={iso:['#eef5fd','#2c639d'],ks:['#e9f7f1','#137e6b'],iec:['#fff7ed','#b27b34'],usage:['#f5f0fc','#7456a6']};
+let measureCanvas=document.createElement('canvas'),ctx=measureCanvas.getContext('2d');
+function splitLines(str,maxWidth,maxLines=2,fontSize=13,weight=600){const s=String(str||''),out=[];ctx.font=`${weight} ${fontSize}px 'Malgun Gothic',sans-serif`;let line='';for(const c of s){if(ctx.measureText(line+c).width>maxWidth&&line){out.push(line);line=c;if(out.length===maxLines-1){break}}else line+=c}if(out.length<maxLines)out.push(line);let consumed=out.join('').length;if(consumed<s.length){let last=out[out.length-1];while(last&&ctx.measureText(last+'…').width>maxWidth)last=last.slice(0,-1);out[out.length-1]=last+'…'}return out;}
+function textLines(g,lines,x,y,className,height=18){lines.forEach((ln,i)=>g.appendChild(SVG('text',{x,y:y+i*height,class:className},ln)))}
+function node(root,typ,x,y,w,h,n,code,opts={}){const key=opts.key||n.id,grp=SVG('g',{class:'node-g','data-key':key,tabindex:0,role:'button','aria-label':n.label+' '+(n.heading||'')});const cc=C[typ];grp.appendChild(SVG('rect',{x,y,width:w,height:h,fill:cc[0],stroke:cc[1],class:'node-rect'}));
+ let heading='';let head=[];if(typ==='ks'){
+  heading='제조 AI V11 · '+code;head=splitLines(n.heading||n.label,w-28,2,16,750);grp.appendChild(SVG('text',{x:x+15,y:y+23,class:'node-meta'},heading));textLines(grp,head,x+15,y+51,'node-title',19);let sub=splitLines(n.description||'',w-30,3,12,400);textLines(grp,sub,x+15,y+53+head.length*20,'node-text',19);
+ }else if(typ==='iso'){
+  grp.appendChild(SVG('text',{x:x+14,y:y+23,class:'node-meta'},'KS X ISO/IEC 5338 · '+code));textLines(grp,splitLines(n.heading,w-28,2,14,700),x+14,y+46,'node-title',19);grp.appendChild(SVG('text',{x:x+14,y:y+h-12,class:'node-small'},n.parent_process||'원문 절 이름 확인'));
+ }else if(typ==='iec'){
+  grp.appendChild(SVG('text',{x:x+14,y:y+21,class:'node-meta'},'IEC 62264-1 · '+code));textLines(grp,splitLines(n.heading,w-28,2,14,700),x+14,y+44,'node-title',19);grp.appendChild(SVG('text',{x:x+14,y:y+h-12,class:'node-small'},'● IEC 원문 제목 확인'));
+ }else{
+  grp.appendChild(SVG('text',{x:x+14,y:y+22,class:'node-meta'},'V11 '+active+' · 활용 내용'));textLines(grp,splitLines(opts.purpose||'개념 참조',w-28,3,13,680),x+14,y+45,'node-title',18);
+ }
+ grp.appendChild(SVG('title',{},n.label+' / '+(opts.purpose||n.heading||n.description||'')));
+ function act(){setFocus({type:'node',record:n})}grp.addEventListener('click',act);grp.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();act()}});root.appendChild(grp);return grp;}
+function edge(root,from,to,stroke,e,opt={}){const key=e?edgeKey(e):'usage:'+opt.usageCode;const g=SVG('g',{class:'edge-g','data-key':key,tabindex:e?0:-1,role:e?'button':'presentation'});const [x1,y1]=from,[x2,y2]=to,sign=Math.sign(x2-x1)||1,c=Math.min(170,Math.abs(x2-x1)*.57);const p=SVG('path',{d:`M${x1},${y1} C${x1+c*sign},${y1} ${x2-c*sign},${y2} ${x2},${y2}`,stroke,class:'edge-line','marker-end':opt.marker||'url(#arrow-iso)'});g.appendChild(p);if(e){p.style.pointerEvents='stroke';g.appendChild(SVG('title',{},e.short+' — '+e.description))}const tag=opt.tag||'';if(tag){const width=opt.width||172,tw=Math.max(50,Math.min(width,220)),centerX=opt.cx??(x1+x2)/2,y=opt.cy??y2;const maxL=opt.maxLines||2,lines=splitLines(tag,tw-18,maxL,11,620),boxH=12+lines.length*15;const chip=SVG('rect',{x:centerX-tw/2,y:y-boxH/2,width:tw,height:boxH,class:'edge-chip'});g.appendChild(chip);lines.forEach((str,i)=>g.appendChild(SVG('text',{x:centerX,y:y-boxH/2+17+i*15,'text-anchor':'middle',class:'edge-tag'},str)))}
+ if(e){function act(){setFocus({type:'edge',record:e})}g.onclick=act;g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();act()}})}root.appendChild(g);return g;}
+function renderGraph(){let c=current(),link=refs(),isos=link.filter(e=>e.target.startsWith('5338:')),iecs=link.filter(e=>e.target.startsWith('62264:'));let n=Math.max(3,isos.length,iecs.length);graphH=Math.max(605,118+n*110);const svg=document.getElementById('graph');svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${graphW} ${graphH}`);svg.setAttribute('width',graphW*zoom);svg.setAttribute('height',graphH*zoom);svg.classList.toggle('hide-labels',!document.getElementById('edgeToggle').checked);
+ const defs=SVG('defs');for(const [name,color] of [['iso','#2c639d'],['iec','#b27b34'],['usage','#7456a6']]){const marker=SVG('marker',{id:'arrow-'+name,markerWidth:9,markerHeight:7,refX:7,refY:3.5,orient:'auto',markerUnits:'userSpaceOnUse'});marker.appendChild(SVG('path',{d:'M0 0 L8 3.5 L0 7 Z',fill:color}));defs.appendChild(marker)}svg.appendChild(defs);
+ const headings=[['KS X ISO/IEC 5338',60,'생애주기 프로세스 원문 절 이름'],['KS V11 제조 AI 지침',670,'선택한 제조 AI 프로세스'],['IEC 62264-1',1320,'제조 기능·정보 모델의 참조 조항'],['V11의 적용 내용',1850,'이 절에서 어떻게 활용하는가']];for(const [name,x,sub] of headings){svg.appendChild(SVG('text',{x,y:35,class:'column-title'},name));svg.appendChild(SVG('text',{x,y:54,class:'column-sub'},sub))}
+ const isoX=50,isoW=420,ksX=670,ksW=390,iecX=1320,iecW=400,usageX=1850,usageW=330,sy=92,step=110,cy=sy+(n-1)*step/2+43,ksY=cy-79;const lines=SVG('g'),shape=SVG('g');svg.appendChild(lines);svg.appendChild(shape);
+ const ksid='V11:'+active;node(shape,'ks',ksX,ksY,ksW,158,NODES[ksid],active);
+ isos.forEach((e,i)=>{const y=sy+i*step+2,t=NODES[e.target];edge(lines,[ksX,cy],[isoX+isoW,y+40],'#2c639d',e,{tag:e.short,marker:'url(#arrow-iso)',cx:570,cy:y+40,width:185,maxLines:2});node(shape,'iso',isoX,y,isoW,84,t,e.target.split(':')[1])});
+ iecs.forEach((e,i)=>{const y=sy+i*step,t=NODES[e.target],code=e.target.split(':')[1];edge(lines,[ksX+ksW,cy],[iecX,y+41],'#b27b34',e,{tag:e.short,marker:'url(#arrow-iec)',cx:1188,cy:y+41,width:226,maxLines:2});node(shape,'iec',iecX,y,iecW,84,t,code);edge(lines,[iecX+iecW,y+41],[usageX,y+41],'#7456a6',null,{tag:'V11 적용',width:112,cx:1783,cy:y+41,marker:'url(#arrow-usage)',usageCode:code});const conceptual=NODES['concept:'+code]||{id:'concept:'+code,label:e.short,heading:e.short,kind:'ConceptSummary'};node(shape,'usage',usageX,y,usageW,84,conceptual,code,{purpose:e.short,key:conceptual.id})});
+ if(!iecs.length){const hint=SVG('text',{x:1330,y:cy,class:'node-text'},'이 절은 62264-1의 조항을 직접 인용하지 않습니다.');shape.appendChild(hint)}
+ if(focusKey){const row=link.find(e=>edgeKey(e)===focusKey);if(row)setFocus({type:'edge',record:row})}
+ }
+function renderAll(){renderIntro();renderTable();renderGraph();setFocus({type:'node',record:NODES['V11:'+active]})}
+function setZoom(v){zoom=Math.min(1.28,Math.max(.49,v));renderGraph()}
+document.getElementById('search').addEventListener('input',renderList);
+document.getElementById('edgeToggle').addEventListener('change',()=>document.getElementById('graph').classList.toggle('hide-labels',!document.getElementById('edgeToggle').checked));
+document.getElementById('zoomOut').addEventListener('click',()=>setZoom(zoom-.12));document.getElementById('zoomIn').addEventListener('click',()=>setZoom(zoom+.12));document.getElementById('zoomReset').addEventListener('click',()=>setZoom(.78));
+document.getElementById('saveSvg').addEventListener('click',()=>{const orig=document.getElementById('graph'),clone=orig.cloneNode(true);clone.setAttribute('width',graphW);clone.setAttribute('height',graphH);clone.setAttribute('xmlns','http://www.w3.org/2000/svg');const styles=document.createElementNS(NS,'style');styles.textContent=`.node-rect{stroke-width:1.5}.node-title{font:700 14px sans-serif;fill:#233f57}.node-text{font:13px sans-serif;fill:#415569}.node-meta{font:700 11px sans-serif;fill:#6c7c8e}.node-small{font:11px sans-serif;fill:#738195}.column-title{font:700 15px sans-serif;fill:#293d50}.column-sub{font:11px sans-serif;fill:#7f8997}.edge-line{fill:none;stroke-width:2}.edge-chip{fill:#fff;stroke:#d6e1eb}.edge-tag{font:620 11px sans-serif;fill:#334861;text-anchor:middle}`;clone.insertBefore(styles,clone.firstChild);const text=new XMLSerializer().serializeToString(clone),url=URL.createObjectURL(new Blob([text],{type:'image/svg+xml;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='KS_V11_'+active.replaceAll('.','_')+'_ontology.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)});
+document.getElementById('summaryCount').textContent=CLAUSES.length+'개 V11 프로세스 · '+DATA.nodes.length+'개 노드 · '+DATA.edges.length+'개 관계';renderList();renderAll();document.getElementById('graphViewport').scrollLeft=0;
+</script>
+</body>
+</html>

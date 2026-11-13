@@ -1,45 +1,9 @@
-# 제조 AI V11 - 현장 정착·실사용 정기 점검
+# Manufacturing AI field-adoption dashboard (V11 v4)
 
-이 폴더는 **제조 AI 시스템의 설계, 개발 및 배포를 위한 생명주기 프로세스 지침 초안 V11**을 바탕으로 작성한 실무 운영 점검 도구입니다.
+## GitHub Pages
+Upload this folder to a GitHub repository root. Open Settings > Pages > Deploy from a branch > main / (root). The local `index.html` works without server or API key.
 
-## 포함 파일
+- `index.html`: static interactive ontology + reference relationship summaries + direct/external field checklist
+- `V11_Field_Checklist.xlsx`: 30-item single-sheet O/X checklist
 
-| 파일 | 설명 |
-|---|---|
-| `index.html` | GitHub Pages용 단일 HTML. V11 ↔ 5338 ↔ 62264-1 참조 온톨로지, 절별 O/X 점검, 질문형 추천 검색 |
-| `V11_field_OX_checklist.xlsx` | 1개 시트·31개 O/X 점검 문항, 직접 개발/외부 공급별 확인 방법·근거 포함 |
-| `field_checklist.csv` | 31개 현장 점검 항목 원자료 |
-| `data.json` | 33개 V11 절, 기존 표준 조항 및 참조 관계, 신규 점검 연결 데이터 |
-
-## GitHub Pages 게시
-
-1. 저장소를 만들고 이 폴더 안의 파일을 저장소 최상위(root)에 업로드합니다.
-2. GitHub 저장소 **Settings > Pages > Build and deployment > Deploy from a branch**를 선택합니다.
-3. `main`의 `/(root)`를 설정한 후 제공된 Pages 주소의 `index.html`을 엽니다.
-
-HTML은 CDN·외부 JS·API 없이 동작하며, `.xlsx` 링크는 같은 폴더의 파일을 가리킵니다. 검색어 추천은 LLM API 호출이 아니라, 문서에 근거해 **사전 작성한 자연어 질문·키워드의 오프라인 매칭**입니다.
-
-## 정기 점검 방법
-
-1. 점검 대상 AI, 공정 또는 설비, 점검 기간과 담당자를 엑셀 상단에 기록합니다.
-2. **직접 개발** 또는 **외부 공급(턴키·부분 외주)** 중 해당하는 확인 방법을 적용합니다. 두 방식을 병행하는 경우 해당 부분을 각각 점검합니다.
-3. 각 질문에 **O** 또는 **X**를 입력합니다. O는 해당 기간 실제 생산 기록·작업자 시연·안전한 시험 등을 확인했다는 뜻이고, X는 증빙이 부족하거나 사용/조치가 확인되지 않았다는 뜻입니다.
-4. 사건이 없었다면 '0건'과 정기 점검 사실을 남깁니다. 사고·전환 관련 항목은 가능한 경우 안전한 모의훈련으로 조치 능력을 확인합니다.
-5. X인 항목에는 개선 담당·기한·재점검 계획을 기록합니다. X는 곧바로 표준 위반 또는 제품 부적합 판정이라는 뜻이 아닙니다.
-6. HTML에서는 절을 선택하고 직접/외부 방식을 전환하여 점검합니다. O/X 입력과 증빙 메모는 브라우저의 로컬 저장소에 저장되며, **O/X 결과 CSV 저장**을 사용하여 별도 기록을 보존할 수 있습니다. 로컬 저장소 사용이 제한된 환경에서는 화면 내에서만 유지됩니다.
-
-## 해석 범위 및 유의사항
-
-- 31개 현장 정착 질문은 V11 및 연계 표준을 **실무 점검 목적에 맞게 재구성한 제안**이며, KS X ISO/IEC 5338 또는 IEC 62264-1의 새로운 규범 요구사항이 아닙니다.
-- 33개 V11 프로세스 절은 일부 점검 질문이 둘 이상의 절에 연결되는 방식으로 모두 포함됩니다.
-- **실사용**은 단순 설치·교육 이수·로그인·모델 평가점수만으로 확인하지 않습니다. 의도한 생산조건에서 AI 결과가 작업자 또는 설비 업무에 활용되는지 확인합니다.
-- 실제 사용 이벤트가 드문 AI의 경우, 관찰기간·적용조건·발생 여부를 확인하고 X를 무조건 실패로 해석하지 않습니다. X는 후속 검토를 요구하는 신호입니다.
-- 절 제목 및 인용 관계는 앞선 V11 참조 온톨로지(5338:2023 국문, IEC 62264-1:2013 원문 절 제목 번역)를 활용합니다. 세부 관계 설명은 V11이 인용한 취지를 요약한 것이며 표준 원문 전문을 대체하지 않습니다.
-
-## 파일 형식과 데이터
-
-- 현장 정기 점검 문항: 31개
-- 참조·분석 대상 V11 프로세스 절: 33개
-- 입력 방법: 엑셀 `O/X` 유효성 검사 및 HTML O/X 버튼
-- HTML의 노드·연결선 툴팁: 간단한 그래프 표기와 구분되는 상세 설명
-- 참고한 흐름: 별도 제공된 **다음 달 자동화 실행 Template**의 담당자·실행 체크·월간 KPI·실패/지연 점검 흐름. 원 양식의 자동화 수준, 난이도 점수, ROI 수치나 판정 임계값을 제조 AI에 그대로 적용하지 않았습니다.
+Based on manufacturing AI lifecycle V11, KS X ISO/IEC 5338, IEC 62264-1 and the original user-supplied checklist. Some checklist criteria (e.g. one worker per shift) are proposed operational sampling methods, **not requirements of the standards**. Recommendations on search are local presets, not live LLM queries.

@@ -1,9 +1,18 @@
-# Manufacturing AI field-adoption dashboard (V11 v4)
+# 제조 AI V11 · 표준 × 제조 AI 사례 온톨로지
 
-## GitHub Pages
-Upload this folder to a GitHub repository root. Open Settings > Pages > Deploy from a branch > main / (root). The local `index.html` works without server or API key.
+`index.html`을 브라우저에서 열거나 GitHub Pages에 업로드하면 됩니다. JavaScript·CSS와 데이터는 HTML 내부에 포함되어 외부 CDN과 API 없이 동작합니다.
 
-- `index.html`: static interactive ontology + reference relationship summaries + direct/external field checklist
-- `V11_Field_Checklist.xlsx`: 30-item single-sheet O/X checklist
+- 왼쪽 V11 절 선택 → 대상절·5338·62264-1 핵심 내용 및 관련 근거
+- `(사례)` 패널 → 발표자료에서 실제 확인한 내용과 V11 수행사항의 적용 예시를 분리해 표시
+- 도식 기준 변경 유형·생애주기 단계·제조 기능 계층·KPI → 참고 PPT와의 연결
+- 하단 참조 그래프 → `(사례)` 노드 클릭/커서로 상세 설명
+- 기존 30개 O/X 점검 및 개발 방식별 확인은 유지하며, Excel 파일은 내용 변경 없이 동봉
+- 검색창에서 '파이프 시점 불일치', '형상 변경 복귀', '현장 실사용 검증' 검색 가능
 
-Based on manufacturing AI lifecycle V11, KS X ISO/IEC 5338, IEC 62264-1 and the original user-supplied checklist. Some checklist criteria (e.g. one worker per shift) are proposed operational sampling methods, **not requirements of the standards**. Recommendations on search are local presets, not live LLM queries.
+## 주의
+사용자가 제공한 DX V10은 데이터 문제를 분석한 사례이지, AI가 정식 배포되어 현장에서 지속 사용되고 있다는 증거가 아닙니다. Dropbox Figures.pptx의 외관 검사 시스템은 도식용 가상 사례입니다. '(사례) 적용하면'은 설명용 가상 적용입니다.
+
+도식 대조에서 확인된 한계·불일치는 `validation_notes.md`를 참고하세요. 원본 PPT와 기존 V11·점검표는 수정하지 않았습니다.
+
+### GitHub Pages
+저장소 루트에 모든 파일 업로드 → Settings → Pages → Deploy from a branch → main, /(root). `index.html`이 바로 열립니다.

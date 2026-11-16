@@ -1,0 +1,708 @@
+{
+  "seah": {
+    "data": {
+      "title": "세아제강 · 공정값 X와 품질값 Y의 연결 문제",
+      "source": "DX V10 pp.5, 12, 19–20, 25",
+      "related": "V11 6.4.7 · 6.4.8 / IEC 62264-1 8.3.3·8.3.5",
+      "nodes": [
+        {
+          "id": "pipe",
+          "x": 30,
+          "y": 65,
+          "title": "파이프",
+          "sub": "공정·검사 대상",
+          "type": "object",
+          "detail": "동일 파이프의 공정값과 품질값을 연결하는 공통 생산 대상. 발표자료는 파이프 단위 데이터 결합 문제를 설명합니다.",
+          "status": "관찰 대상"
+        },
+        {
+          "id": "zinc",
+          "x": 290,
+          "y": 65,
+          "title": "아연도금·블로잉",
+          "sub": "도금 공정",
+          "type": "equipment",
+          "detail": "파이프를 아연도금하고 여분의 아연을 블로잉으로 제거하는 생산공정.",
+          "status": "실제 공정"
+        },
+        {
+          "id": "x",
+          "x": 570,
+          "y": 65,
+          "title": "공정 측정값 X",
+          "sub": "압력·온도 등",
+          "type": "data",
+          "detail": "AI 입력변수에 해당하는 공정조건. 실제 도금·블로잉 시점과 연결해야 합니다.",
+          "status": "측정 데이터"
+        },
+        {
+          "id": "t",
+          "x": 840,
+          "y": 65,
+          "title": "도금 시각 T",
+          "sub": "공정 발생 시각",
+          "type": "time",
+          "detail": "공정 X가 적용된 실제 시각. 검사 시각과 같다고 단정할 수 없습니다.",
+          "status": "자료 설명"
+        },
+        {
+          "id": "roll",
+          "x": 30,
+          "y": 300,
+          "title": "롤링 이송",
+          "sub": "파이프 회전",
+          "type": "process",
+          "detail": "도금 이후 이동하는 동안 파이프가 회전하여 도금 당시 원주 방향의 기준 위치를 잃을 수 있습니다.",
+          "status": "관찰된 현상"
+        },
+        {
+          "id": "inspection",
+          "x": 290,
+          "y": 300,
+          "title": "품질검사",
+          "sub": "4점 두께 측정",
+          "type": "equipment",
+          "detail": "도금 후에 이루어지는 검사. 도금 당시의 공정 위치와 측정 위치가 서로 어긋날 수 있습니다.",
+          "status": "실제 공정"
+        },
+        {
+          "id": "y",
+          "x": 570,
+          "y": 300,
+          "title": "두께 측정값 Y",
+          "sub": "위치별 도금 두께",
+          "type": "data",
+          "detail": "AI 목표값으로 사용되는 검사 두께. 같은 파이프라도 길이 방향·원주 방향 위치에 따라 달라질 수 있습니다.",
+          "status": "분석 결과"
+        },
+        {
+          "id": "t2",
+          "x": 840,
+          "y": 300,
+          "title": "검사 시각 T+α",
+          "sub": "검사 발생 시각",
+          "type": "time",
+          "detail": "도금 공정 시각과 검사 시각의 차이가 존재합니다. 동일 행 결합만으로 정확한 공정조건 대응이 보장되지 않습니다.",
+          "status": "관찰된 문제"
+        },
+        {
+          "id": "context",
+          "x": 295,
+          "y": 505,
+          "title": "연계·정규화 규칙",
+          "sub": "ID·시각·위치",
+          "type": "action",
+          "detail": "(적용 제안) 공통 파이프 ID, 실제 도금 시각, 측정 위치·회전 이력을 연결하고 확보하지 못한 맥락을 기록합니다.",
+          "status": "향후 검증 필요"
+        },
+        {
+          "id": "standard",
+          "x": 702,
+          "y": 505,
+          "title": "V11 6.4.8",
+          "sub": "데이터 맥락화",
+          "type": "standard",
+          "detail": "(표준 매칭) 데이터 생성 맥락 및 연계 추적성을 설명합니다. 연결이 완성됐다는 증거가 아니라 개선 방향과의 대응입니다.",
+          "status": "표준 근거"
+        }
+      ],
+      "edges": [
+        {
+          "from": "pipe",
+          "to": "zinc",
+          "label": "도금 대상",
+          "detail": "자료는 파이프가 도금과 블로잉 공정을 거친다는 사실을 보여줍니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "zinc",
+          "to": "x",
+          "label": "공정값 생성",
+          "detail": "공정 압력·온도 등 X는 도금·블로잉 공정과 관련된 측정값입니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "x",
+          "to": "t",
+          "label": "시각 매칭 필요",
+          "detail": "공정 X는 도금이 실제 수행된 시점과 연결되어야 합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "pipe",
+          "to": "roll",
+          "label": "이송·회전",
+          "detail": "롤링 이송 시 파이프가 회전하여 기준 위치가 달라질 수 있습니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "roll",
+          "to": "inspection",
+          "label": "후속 검사",
+          "detail": "이송 이후 품질검사가 이루어져 위치 정보에 차이가 발생합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "inspection",
+          "to": "y",
+          "label": "두께 측정",
+          "detail": "품질검사에서 위치별 두께 Y가 측정됩니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "y",
+          "to": "t2",
+          "label": "검사 시각",
+          "detail": "품질검사 측정 시각은 실제 도금 시각과 시간차가 있습니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "x",
+          "to": "context",
+          "label": "입력 위치·시간",
+          "detail": "X의 도금 시각과 처리 대상 ID를 규칙에 연결합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "y",
+          "to": "context",
+          "label": "출력 위치·시간",
+          "detail": "Y의 검사 시각과 두께 측정 위치를 규칙에 연결합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "context",
+          "to": "standard",
+          "label": "실행해야 할 지식",
+          "detail": "V11 6.4.8에 따라 제조 맥락과 데이터 계보 및 미확보 맥락을 기록할 수 있습니다.",
+          "kind": "proposed"
+        }
+      ]
+    },
+    "physics": {
+      "title": "세아제강 · 공정 Physics를 지식으로 확보하기",
+      "source": "DX V10 pp.11–18, 22–25",
+      "related": "V11 6.4.7 · 6.4.8 · 6.4.1",
+      "nodes": [
+        {
+          "id": "bath",
+          "x": 35,
+          "y": 80,
+          "title": "아연 욕조",
+          "sub": "용융아연 코팅",
+          "type": "process",
+          "detail": "파이프의 아연도금이 이루어지는 공정 단계입니다.",
+          "status": "현장 공정"
+        },
+        {
+          "id": "tilt",
+          "x": 315,
+          "y": 80,
+          "title": "경사 인양",
+          "sub": "선단·후단 차이",
+          "type": "process",
+          "detail": "비스듬한 인양으로 위치에 따라 블로잉 조건과 체류가 다를 수 있다는 가설의 물리적 배경입니다.",
+          "status": "가설 단서"
+        },
+        {
+          "id": "air",
+          "x": 605,
+          "y": 80,
+          "title": "에어나이프",
+          "sub": "여분의 도금액 제거",
+          "type": "equipment",
+          "detail": "도금 후 블로잉으로 잉여 도금액을 제거합니다.",
+          "status": "현장 공정"
+        },
+        {
+          "id": "gravity",
+          "x": 35,
+          "y": 325,
+          "title": "중력·흐름",
+          "sub": "원주 방향 편차 가설",
+          "type": "physics",
+          "detail": "용융도금액의 중력 방향 이동 가설. 실측에서는 원주 방향 두께 변동은 관찰했지만 상하 관계까지 확정하지 못했습니다.",
+          "status": "가설 일부 미검증"
+        },
+        {
+          "id": "length",
+          "x": 315,
+          "y": 325,
+          "title": "길이 방향 편차",
+          "sub": "중간부↑ 후단↓",
+          "type": "observation",
+          "detail": "선단에서 후단까지 단조증가할 것이라는 가설은 확인되지 않았고, 중간부 증가·후단부 감소 경향이 관찰되었습니다.",
+          "status": "분석 결과"
+        },
+        {
+          "id": "circ",
+          "x": 605,
+          "y": 325,
+          "title": "원주 방향 편차",
+          "sub": "위치별 도금 두께 차이",
+          "type": "observation",
+          "detail": "원주 방향 측정 지점을 확장한 결과, 측정 위치별 편차가 관찰되었습니다. 하단이 반드시 더 두껍다고 확정하지 않았습니다.",
+          "status": "분석 결과"
+        },
+        {
+          "id": "knowledge",
+          "x": 35,
+          "y": 540,
+          "title": "공정 메커니즘 지식",
+          "sub": "원인·관계·근거 기록",
+          "type": "action",
+          "detail": "(적용 제안) 인양·중력·블로잉·회전과 품질 편차의 관계를 확인 수준과 함께 구조화합니다.",
+          "status": "제안"
+        },
+        {
+          "id": "features",
+          "x": 315,
+          "y": 540,
+          "title": "AI 입력·목표 설계",
+          "sub": "위치·시간 고려",
+          "type": "action",
+          "detail": "(적용 제안) 지식을 바탕으로 위치 정보를 포함한 Y와 시각 정렬된 X를 구성합니다.",
+          "status": "제안"
+        },
+        {
+          "id": "std",
+          "x": 605,
+          "y": 540,
+          "title": "V11 6.4.7",
+          "sub": "제조 도메인 지식 획득",
+          "type": "standard",
+          "detail": "공정 원리와 불량 메커니즘을 모델 설계에 활용 가능한 형태로 확보하도록 안내합니다.",
+          "status": "표준 근거"
+        }
+      ],
+      "edges": [
+        {
+          "from": "bath",
+          "to": "tilt",
+          "label": "후속 공정",
+          "detail": "도금 후 인양 동작이 두께 형성에 영향을 줄 수 있습니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "tilt",
+          "to": "air",
+          "label": "인양·블로잉",
+          "detail": "파이프의 선단과 후단이 서로 다른 시점에 블로잉됩니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "air",
+          "to": "length",
+          "label": "두께 영향 가설",
+          "detail": "가설과 실제 분석 결과를 구분해야 합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "gravity",
+          "to": "circ",
+          "label": "영향 가설",
+          "detail": "중력에 의한 하부 두께 증가 가설은 상하 관계까지 확정되지 않았습니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "length",
+          "to": "knowledge",
+          "label": "관찰로 기록",
+          "detail": "길이 방향 측정 결과를 가설과 비교한 지식으로 기록합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "circ",
+          "to": "knowledge",
+          "label": "관찰로 기록",
+          "detail": "원주 방향 편차와 검증 한계를 기록합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "knowledge",
+          "to": "features",
+          "label": "모델 설계에 활용",
+          "detail": "공정 메커니즘을 AI 입력·목표 정의에 활용합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "features",
+          "to": "std",
+          "label": "표준 내용과 대응",
+          "detail": "해당 제조 지식 확보와 데이터 설계가 6.4.7·6.4.8과 연결됩니다.",
+          "kind": "proposed"
+        }
+      ]
+    },
+    "validation": {
+      "title": "세아제강 · 예측모델을 실제 조치·성과에 연결하기",
+      "source": "DX V10 pp.8–9, 22–26 · 이후 단계는 적용 예시",
+      "related": "V11 6.4.2 · 6.4.10 · 6.4.11 · 6.4.13 · 6.4.14",
+      "nodes": [
+        {
+          "id": "data",
+          "x": 30,
+          "y": 80,
+          "title": "재구성 데이터",
+          "sub": "시간·위치 정렬",
+          "type": "action",
+          "detail": "실측 불일치가 확인되어 데이터 재구성이 필요합니다. 완료 여부는 공개 발표에 확정되지 않았습니다.",
+          "status": "개선 필요"
+        },
+        {
+          "id": "model",
+          "x": 320,
+          "y": 80,
+          "title": "도금 두께 예측 AI",
+          "sub": "예측·최적화 연구",
+          "type": "system",
+          "detail": "발표자료에서 기존 RF·XGBoost 성능 한계를 제시하며, 후속 모델 개발은 진행 단계로 표시합니다.",
+          "status": "진행 중"
+        },
+        {
+          "id": "recommend",
+          "x": 620,
+          "y": 80,
+          "title": "조업조건 권고",
+          "sub": "제안 설정값",
+          "type": "action",
+          "detail": "(가상 적용 예시) 품질 기준을 지키는 공정조건 권고를 만들 수 있습니다. 발표에서 실제 자동제어 적용을 입증하지 않습니다.",
+          "status": "적용 제안"
+        },
+        {
+          "id": "operator",
+          "x": 30,
+          "y": 320,
+          "title": "작업자·설비",
+          "sub": "권고 채택·변경·거부",
+          "type": "actor",
+          "detail": "(적용 제안) 현장 조치의 담당과 적용 여부를 기록합니다.",
+          "status": "자료 미확인"
+        },
+        {
+          "id": "result",
+          "x": 320,
+          "y": 320,
+          "title": "생산 결과",
+          "sub": "도금 두께·아연 사용량",
+          "type": "data",
+          "detail": "발표의 목표는 산포 최소화 후 평균 도금 두께와 아연 사용량 절감이며, 달성 완료가 보고된 것은 아닙니다.",
+          "status": "성과 목표"
+        },
+        {
+          "id": "evidence",
+          "x": 620,
+          "y": 320,
+          "title": "현장 활용 증빙",
+          "sub": "입력→권고→조치→결과",
+          "type": "evidence",
+          "detail": "(적용 제안) 실제 사용 기록과 생산 실적을 연결해 모델 성능, 실사용, 제조 성과를 각각 확인합니다.",
+          "status": "자료 미확인"
+        },
+        {
+          "id": "standard",
+          "x": 320,
+          "y": 530,
+          "title": "V11 6.4.13",
+          "sub": "실제 생산환경의 의도된 사용 확인",
+          "type": "standard",
+          "detail": "모델 검증과 구분해 실제 작업자 조치와 제조 성과의 증거를 확인하고 적용·보완·중단을 판정합니다.",
+          "status": "표준 근거"
+        }
+      ],
+      "edges": [
+        {
+          "from": "data",
+          "to": "model",
+          "label": "학습·예측 입력",
+          "detail": "정합 데이터로 모델을 개발하는 것은 개선 방향입니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "model",
+          "to": "recommend",
+          "label": "권고 생성",
+          "detail": "실제 권고 시스템 구현 여부는 자료에서 확인되지 않았습니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "recommend",
+          "to": "operator",
+          "label": "작업에 활용",
+          "detail": "AI 제안이 작업자 또는 설비에서 실제 적용되었는지 기록합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "operator",
+          "to": "result",
+          "label": "실행 결과",
+          "detail": "수용·수정 여부와 그에 따른 제조 결과를 연결합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "result",
+          "to": "evidence",
+          "label": "성과 증빙",
+          "detail": "산포·아연 사용량 변화와 생산조건을 같이 관리합니다.",
+          "kind": "proposed"
+        },
+        {
+          "from": "evidence",
+          "to": "standard",
+          "label": "실사용 확인",
+          "detail": "기술 성능과 현장 사용 및 제조 KPI를 구분해 확인합니다.",
+          "kind": "proposed"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Figures.pptx · 검사 AI 형상 조합 예시",
+      "source": "Dropbox Figures.pptx 그림 4·6 (가상 도식 예시)",
+      "related": "V11 6.3.5 · 6.4.12",
+      "nodes": [
+        {
+          "id": "station",
+          "x": 45,
+          "y": 85,
+          "title": "검사 스테이션 1",
+          "sub": "역할 기반 설비 단위",
+          "type": "equipment",
+          "detail": "검사를 수행하는 역할 기반 설비 단위 예시입니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "camera",
+          "x": 335,
+          "y": 85,
+          "title": "카메라 C-1027",
+          "sub": "물리적 자산",
+          "type": "equipment",
+          "detail": "실제 카메라 자산의 식별자는 역할 기반 검사 스테이션과 구분합니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "manufacturing",
+          "x": 620,
+          "y": 85,
+          "title": "제조 형상",
+          "sub": "레시피 R2 · 설정 B",
+          "type": "configuration",
+          "detail": "제조 측 레시피·SOP·카메라 설정의 버전 조합입니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "ai",
+          "x": 45,
+          "y": 330,
+          "title": "AI 형상",
+          "sub": "모델 v2 · 데이터 D3",
+          "type": "configuration",
+          "detail": "AI 모델·데이터 세트·추론 SW·임계값 0.8을 포함하는 조합입니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "baseline",
+          "x": 335,
+          "y": 330,
+          "title": "기준 형상",
+          "sub": "AI·제조 형상 묶음",
+          "type": "configuration",
+          "detail": "검증·확인에 사용한 AI·제조 형상 조합을 관리 대상으로 삼습니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "rollback",
+          "x": 620,
+          "y": 330,
+          "title": "전환·복귀",
+          "sub": "사전 정의된 조합",
+          "type": "action",
+          "detail": "부분 교체 상태를 사용하지 않고 사전에 정한 조합으로 복귀하거나 불가 시 AI 출력 사용을 제한합니다.",
+          "status": "도식 예"
+        },
+        {
+          "id": "std",
+          "x": 335,
+          "y": 540,
+          "title": "V11 6.3.5·6.4.12",
+          "sub": "형상관리·전환",
+          "type": "standard",
+          "detail": "형상 식별과 일관된 전환·복귀를 관리하는 표준 내용입니다.",
+          "status": "표준 근거"
+        }
+      ],
+      "edges": [
+        {
+          "from": "station",
+          "to": "camera",
+          "label": "역할 수행",
+          "detail": "특정 물리적 자산이 검사 스테이션 역할을 수행합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "camera",
+          "to": "manufacturing",
+          "label": "설정 적용",
+          "detail": "카메라 설정 B 등 제조 형상을 확인합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "manufacturing",
+          "to": "baseline",
+          "label": "묶음",
+          "detail": "제조 형상을 기준 조합에 포함합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "ai",
+          "to": "baseline",
+          "label": "묶음",
+          "detail": "AI 형상을 기준 조합에 포함합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "baseline",
+          "to": "rollback",
+          "label": "복귀 기준",
+          "detail": "형상 조합을 함께 전환·복귀합니다.",
+          "kind": "observed"
+        },
+        {
+          "from": "rollback",
+          "to": "std",
+          "label": "표준 매칭",
+          "detail": "기준 형상과 전환 관리의 관계입니다.",
+          "kind": "observed"
+        }
+      ]
+    }
+  },
+  "saref": {
+    "title": "ETSI SAREF4INMA · 제품–배치–설비–측정값",
+    "source": "https://saref.etsi.org/saref4inma/v2.1.1/",
+    "related": "ETSI SAREF4INMA v2.1.1 · V11 6.4.8에 참고",
+    "nodes": [
+      {
+        "id": "item",
+        "x": 40,
+        "y": 65,
+        "title": "Shaver10023",
+        "sub": "Item",
+        "type": "object",
+        "detail": "공개 온톨로지의 전기면도기 개체 예시입니다.",
+        "status": "공개 예제"
+      },
+      {
+        "id": "batch",
+        "x": 345,
+        "y": 65,
+        "title": "ItemBatch",
+        "sub": "생산 배치",
+        "type": "object",
+        "detail": "개체가 어느 생산 배치와 연결되는지를 표현합니다.",
+        "status": "온톨로지 개념"
+      },
+      {
+        "id": "machine",
+        "x": 650,
+        "y": 65,
+        "title": "Welding_Machine_2",
+        "sub": "ProductionEquipment",
+        "type": "equipment",
+        "detail": "면도기 생산과 관련된 용접 장비의 예시입니다.",
+        "status": "공개 예제"
+      },
+      {
+        "id": "sensor",
+        "x": 40,
+        "y": 315,
+        "title": "온도 센서 1",
+        "sub": "WeldingMachineTemperatureSensor1",
+        "type": "equipment",
+        "detail": "용접 설비의 온도 센서로 관측을 수행합니다.",
+        "status": "공개 예제"
+      },
+      {
+        "id": "obs",
+        "x": 345,
+        "y": 315,
+        "title": "온도 관측 W101520",
+        "sub": "Observation",
+        "type": "data",
+        "detail": "온도 관측 개체에 시간·단위·측정값을 결합합니다.",
+        "status": "공개 예제"
+      },
+      {
+        "id": "value",
+        "x": 650,
+        "y": 315,
+        "title": "223 °C",
+        "sub": "2019-01-28 12:11:10",
+        "type": "data",
+        "detail": "SAREF4INMA 문서에 제시된 용접 온도 관측값의 예시입니다.",
+        "status": "공개 예제"
+      },
+      {
+        "id": "v11",
+        "x": 345,
+        "y": 545,
+        "title": "V11 6.4.8에 참고",
+        "sub": "데이터별 생성 맥락",
+        "type": "standard",
+        "detail": "제품·장비·관측값·시각을 연결하는 모델링 방식이 제조 데이터 맥락화 예시에 도움됩니다.",
+        "status": "대응 해설"
+      }
+    ],
+    "edges": [
+      {
+        "from": "item",
+        "to": "batch",
+        "label": "배치 소속",
+        "detail": "개체가 관련된 제조 배치에 속한다는 연결입니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "batch",
+        "to": "machine",
+        "label": "제조설비 관련",
+        "detail": "생산 배치와 생산장비 사이의 관계를 개념화합니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "machine",
+        "to": "sensor",
+        "label": "센서 구성",
+        "detail": "용접 장비가 해당 온도 센서를 포함합니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "sensor",
+        "to": "obs",
+        "label": "관측 수행",
+        "detail": "센서가 시각별 온도 관측을 생성합니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "obs",
+        "to": "value",
+        "label": "결과·시각",
+        "detail": "관측값 223 °C와 타임스탬프가 연결됩니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "obs",
+        "to": "item",
+        "label": "관심 대상",
+        "detail": "온도 관측이 Shaver10023 생산에 관련됨을 의미합니다.",
+        "kind": "observed"
+      },
+      {
+        "from": "obs",
+        "to": "v11",
+        "label": "표준에 참고",
+        "detail": "ETSI 모델을 V11 제조 데이터 맥락화 설명에 응용하는 제안입니다.",
+        "kind": "proposed"
+      }
+    ]
+  }
+}

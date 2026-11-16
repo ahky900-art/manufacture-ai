@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>제조 AI V11 | 세부 내용 기준 표준 매핑</title>
+<title>제조 AI V11 | 세부 참조 및 V11 내부 관련 절 v9</title>
 <style>
 :root{--bg:#f3f5f8;--paper:#fff;--ink:#18293b;--sub:#60768d;--border:#dbe3ed;--blue:#2b66a3;--green:#17765b;--amber:#b67d35;--violet:#63579a;--paleblue:#edf5ff;--palegreen:#e9f6f0;--focus:#f9edda}
 *{box-sizing:border-box}body{margin:0;font:14px/1.58 'Pretendard','Noto Sans KR','Malgun Gothic',system-ui,sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #88afe2;outline-offset:2px}header{padding:18px 28px;background:#13334e;color:white}header .over{font-weight:800;letter-spacing:.15em;font-size:10px;color:#92bdce}header h1{font-size:22px;margin:2px 0 4px}header p{font-size:12px;color:#d2e1ed;margin:0}.topnav{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.topnav button{background:#ffffff14;color:#e0ebf4;border:1px solid #ffffff25;border-radius:8px;padding:8px 15px;font-weight:700}.topnav button.active{background:#fff;color:#143e5e;border-color:white}
@@ -11,16 +11,36 @@ main{padding:20px 23px 42px;min-width:0}.side-hidden aside{display:none}.side-hi
 .step{display:grid;grid-template-columns:28px 1fr;gap:13px;padding:13px;border-bottom:1px solid #ebeff3;cursor:pointer}.step:last-child{border:0}.step .stepnum{background:#e3eff9;color:#346b96;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-weight:800}.step.active{background:#f0f8f4;border-radius:9px}.step strong{font-size:13px}.step p{font-size:11px;color:#657990;margin:4px 0 7px}.minor{font-size:11px;color:#637890}.subhead{font-size:13px;font-weight:800;margin:0 0 10px}
 .sceneButtons{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.sceneButtons button{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:#39566f;font-weight:700;font-size:12px}.sceneButtons button.on{border-color:#73ab93;background:#edf6f1;color:#167159}.sceneGrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px}.sceneCanvas{background:#fbfdff;border:1px solid #e0e7ee;border-radius:10px;overflow:auto}.sceneCanvas svg{display:block;min-width:900px;max-width:none;width:100%;height:auto}.sceneInfo{background:#f7fafc;border:1px solid var(--border);border-radius:10px;padding:18px}.sceneInfo h3{margin:4px 0 8px;font-size:16px}.sceneInfo p{font-size:12px;color:#536a7c}.legend{display:flex;gap:16px;align-items:center;font-size:11px;color:#64788a;flex-wrap:wrap}.legend span{display:inline-flex;align-items:center;gap:6px}.legline{display:inline-block;width:30px;border-top:2px solid #549378}.legline.dash{border-top-style:dashed;border-top-color:#c18b4c}.scene-node{cursor:pointer}.scene-node:hover rect{stroke-width:3!important}.scene-edge{cursor:pointer}.scene-edge:hover path{stroke-width:3!important}.scene-edge.active path{stroke:#10745a!important;stroke-width:4!important;opacity:1!important}.scene-node.active rect{stroke:#0e765b!important;stroke-width:3!important}.scene-node.faded,.scene-edge.faded{opacity:.28}.sourceLink{display:inline-block;font-size:12px;margin-top:8px;color:#1e648c;text-decoration:underline}.toolgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.toolbox{padding:14px;border:1px solid #dce6ee;border-radius:10px}.toolbox h3{font-size:14px;margin:0 0 5px}.toolbox p{font-size:12px;margin:0 0 7px;color:#5b7084}.toolbox a{font-size:11px;color:#256d9c}.method{margin:7px 0;font-size:12px;color:#4b6377}.footer{font-size:11px;color:#788b9b;margin-top:22px}
 @media(max-width:1080px){.layout{grid-template-columns:200px minmax(0,1fr)}#mappingCore{grid-template-columns:minmax(230px,1fr) 45px minmax(230px,1fr)}.sceneGrid{grid-template-columns:1fr}}@media(max-width:760px){.layout{display:block}aside{height:auto;max-height:270px;position:relative}main{padding:14px}#mappingCore{grid-template-columns:1fr;gap:15px}#mapLines{display:none}.detailGrid,.toolgrid{grid-template-columns:1fr}header{padding:17px}header h1{font-size:18px}}
+
+/* v9: third-column V11-to-V11 links via an exact shared IEC 62264-1 clause */
+#viewGraph{overflow-x:auto;padding-bottom:10px}
+#mappingCore{grid-template-columns:minmax(225px,1fr) 42px minmax(230px,1fr) 42px minmax(255px,1.13fr);min-width:880px;gap:3px}
+.mcard.related{border-left:4px solid #a395d8;cursor:pointer}
+.mcard.related.selected{background:#f0eefb;border-color:#7050af;box-shadow:0 0 0 1px #7050af}
+.mcard.related strong{color:#493b77}
+.mcard.related .relmeta{display:block;color:#694ba4;font-size:10px;font-weight:800;margin-bottom:4px}
+.mcard.related .relrole{display:block;color:#455d70;font-size:11px;margin:4px 0;line-height:1.5}
+.mcard.ref.focused{box-shadow:0 0 0 2px #2c8a70;background:#dff5e9}
+#mapLines path.internal{stroke:#897cc0;stroke-width:2;opacity:.55}
+#mapLines path.internal.active{stroke:#684cae;stroke-width:3.6;opacity:1}
+#mapLines path.internal.dim{opacity:.08}
+#mapLines path.dim{opacity:.08}
+.relatedfooter{padding:8px 10px;border-radius:9px;background:#f5f2fb;margin:6px 0;color:#665584;font-size:11px}
+.relatedmore{display:block;width:100%;background:#f6f1ff;border:1px solid #d9cef1;color:#5f4793;border-radius:8px;padding:9px 10px;font-size:11px;font-weight:800;text-align:center}
+.relation-meaning{font-size:11px;color:#50677a;margin-top:4px;line-height:1.55}
+.detailGrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1280px){#mappingCore{grid-template-columns:245px 40px 235px 40px 260px;min-width:838px}}
+@media (max-width:760px){#mappingCore{grid-template-columns:245px 40px 235px 40px 260px;min-width:838px}#mapLines{display:block}.detailGrid.three{grid-template-columns:1fr}}
 </style></head><body>
-<header><div class="over">KS V11 · MANUFACTURING AI · STANDARD MAPPING</div><h1>세부 수행내용과 참조표준을 연결해서 보기</h1><p>절 전체를 한 번에 연결하지 않습니다. 왼쪽 수행내용을 선택하면 관련된 참조절만 강조됩니다.</p><nav class="topnav"><button data-page="mapping" class="active">세부 표준 매핑</button><button data-page="seah">세아제강 사례</button><button data-page="saref">SAREF4INMA</button><button data-page="tools">시각화 방식 비교</button></nav></header>
+<header><div class="over">KS V11 · MANUFACTURING AI · STANDARD MAPPING</div><h1>세부 수행내용과 참조표준을 연결해서 보기</h1><p>① V11 세부 내용 → ② IEC 62264-1 참조 근거 → ③ 같은 근거를 사용하는 다른 V11 절. 선택한 관계만 강조합니다.</p><nav class="topnav"><button data-page="mapping" class="active">세부 표준 매핑</button><button data-page="seah">세아제강 사례</button><button data-page="saref">SAREF4INMA</button><button data-page="tools">시각화 방식 비교</button></nav></header>
 <div class="layout"><aside><div class="side-label">V11 대상 절 <span id="sidecount"></span></div><input type="search" id="search" placeholder="6.4.8, 형상 관리, 데이터..." aria-label="V11 절 검색"><div id="clauseList"></div><div class="callout">33개 절 중 8개 핵심 절은 V11 수행내용을 별도 관점으로 재구성했습니다. 그 외 절은 기존 참조 이유를 세부 관점으로 나눈 초안이며, 원문 항목 확정 검토가 필요합니다.</div></aside>
 <main><section class="section active" id="page-mapping">
-<div class="panel"><div class="eyebrow">V11 세부 수행내용 ↔ 참조표준 근거</div><h2 class="heading" id="clauseTitle">6.4.8 AI 데이터 공학</h2><p class="brief" id="clauseCore"></p><div class="row" style="margin-top:12px"><span class="chip green" id="mappingLevel"></span><span class="chip" id="mappingCounts"></span></div><div class="ctrls" id="viewBtns"><button data-view="graph" class="on">연결형</button><button data-view="table">매핑표</button><button data-view="flow">순서도형</button><button data-view="tree">계층형</button></div><div class="ctrls" id="filterBtns"><button id="focusBtn" class="on">선택한 연결만 보기</button><button id="allBtn">모든 연결 보기</button><button id="resetBtn">선택 초기화</button></div><div class="callout" id="mappingNote">왼쪽 노드를 선택하면 해당 수행내용과 직접 연결된 참조절만 강조합니다. 연결은 기존 V11 참조 근거를 읽기 쉽게 재배열한 초안이며, 자동 적합성 판정이 아닙니다.</div></div>
-<div class="panel" id="viewGraph"><div id="mappingCore"><svg id="mapLines" aria-hidden="true"></svg><div class="mapcolumn"><div class="mapcoltop"><b>① V11에서 다루는 세부 내용</b><span id="targetCount"></span></div><div id="targets"></div></div><div></div><div class="mapcolumn"><div class="mapcoltop"><b>② 이를 뒷받침하는 참조 내용</b><span id="refCount"></span></div><div id="refs"></div></div></div></div>
+<div class="panel"><div class="eyebrow">V11 세부 수행내용 → IEC 62264-1 참조 → 다른 V11 절</div><h2 class="heading" id="clauseTitle">6.4.8 AI 데이터 공학</h2><p class="brief" id="clauseCore"></p><div class="row" style="margin-top:12px"><span class="chip green" id="mappingLevel"></span><span class="chip" id="mappingCounts"></span><span class="chip" id="crossCounts"></span></div><div class="ctrls" id="viewBtns"><button data-view="graph" class="on">연결형</button><button data-view="table">매핑표</button><button data-view="flow">순서도형</button><button data-view="tree">계층형</button></div><div class="ctrls" id="filterBtns"><button id="focusBtn" class="on">선택한 연결만 보기</button><button id="allBtn">모든 연결 보기</button><button id="resetBtn">선택 초기화</button></div><div class="callout" id="mappingNote">① 세부 수행내용을 누르면 관련 ② 참조절이 강조되고, 그 62264 절을 함께 사용하는 ③ 다른 V11 절이 표시됩니다. ③을 누르면 공통 참조 경로가 강조됩니다. <b>공통 참조는 동일 근거 사용을 뜻할 뿐, V11 절 사이의 직접 의무나 선행·후행을 입증하지 않습니다.</b></div></div>
+<div class="panel" id="viewGraph"><div id="mappingCore"><svg id="mapLines" aria-hidden="true"></svg><div class="mapcolumn"><div class="mapcoltop"><b>① V11 세부 수행내용</b><span id="targetCount"></span></div><div id="targets"></div></div><div></div><div class="mapcolumn"><div class="mapcoltop"><b>② 참조표준의 세부 근거</b><span id="refCount"></span></div><div id="refs"></div></div><div></div><div class="mapcolumn"><div class="mapcoltop"><b>③ V11 내부의 관련 절</b><span id="relatedCount"></span></div><div id="related"></div></div></div><div class="relatedfooter">연결 유형: <b>동일한 IEC 62264-1 절을 각자의 세부 관점에서 참조</b> · 동일 참조 절 번호가 정확히 일치한 경우에만 연결 · 전후 관계나 준수 판정은 아님</div></div>
 <div class="panel" id="viewTable" style="display:none"><h3 class="subhead">세부 내용별 대응표 — 같은 내용을 글로 확인</h3><div class="tableWrap" id="tableHere"></div></div>
 <div class="panel" id="viewFlow" style="display:none"><h3 class="subhead">수행내용 순서도형 — 설명을 위한 나열이며 필수 수행 순서는 아님</h3><div id="flowHere"></div></div>
 <div class="panel" id="viewTree" style="display:none"><h3 class="subhead">계층형 — 절 → 세부 관점 → 참조 근거</h3><div id="treeHere"></div></div>
-<div class="panel"><div class="eyebrow">선택한 관계의 구체적인 의미</div><div class="detailGrid"><div class="detailbox" id="targetDetail"></div><div class="detailbox" id="refDetail"></div></div></div>
+<div class="panel"><div class="eyebrow">선택한 공통 참조 관계의 구체적인 의미</div><div class="detailGrid three"><div class="detailbox" id="targetDetail"></div><div class="detailbox" id="refDetail"></div><div class="detailbox" id="relatedDetail"></div></div></div>
 </section>
 <section class="section" id="page-seah"><div class="panel"><div class="eyebrow">제조 데이터에서 출발하는 사례</div><h2 class="heading">세아제강 · 실제 제조 객체 사이의 관계</h2><p class="brief">공정에서 관찰된 사실과 향후 적용할 표준 모델을 구분합니다. 점선을 실제 구축·검증 완료로 읽지 마세요.</p><div class="sceneButtons" id="seahButtons"><button data-scene="data" class="on">도금 X ↔ 검사 Y</button><button data-scene="physics">불량 원인과 공정 Physics</button><button data-scene="validation">AI 실사용 확인</button><button data-scene="configuration">설정·모델 형상</button></div></div><div class="panel"><div class="row between"><h3 class="subhead" id="sceneTitle"></h3><div class="legend"><span><i class="legline"></i>관찰·자료 관계</span><span><i class="legline dash"></i>적용 제안</span></div></div><div class="sceneGrid"><div class="sceneCanvas"><svg id="seahSvg" viewBox="0 0 1110 775" role="img" aria-label="세아제강 제조 객체 관계 그래프"></svg></div><div class="sceneInfo" id="sceneInfo"></div></div><p class="tiny" id="sceneSource"></p></div></section>
 <section class="section" id="page-saref"><div class="panel"><div class="eyebrow">우수사례 01 · 1개 사례만 유지</div><h2 class="heading">ETSI SAREF4INMA — 제품에서 측정값까지</h2><p class="brief">전기면도기 제품·생산 배치·용접 설비·온도 센서·관측값을 객체로 연결하는 공개 예시입니다.</p><p class="row"><a class="sourceLink" href="https://saref.etsi.org/saref4inma/v2.1.1/" target="_blank" rel="noopener">ETSI 원문 열기</a><span class="chip">참조용 · V11 적합성 검증 아님</span></p></div><div class="panel"><div class="sceneGrid"><div class="sceneCanvas"><svg id="sarefSvg" viewBox="0 0 1110 775" role="img" aria-label="SAREF4INMA 객체 관계 그래프"></svg></div><div class="sceneInfo" id="sarefInfo"></div></div><p class="tiny">기존 v7 공개 예제 설명을 재사용한 도식입니다. 표준의 모든 클래스와 프로퍼티를 나열한 정식 OWL 그래프가 아닙니다.</p></div></section>
@@ -32,7 +52,7 @@ main{padding:20px 23px 42px;min-width:0}.side-hidden aside{display:none}.side-hi
 const DATA=JSON.parse(document.getElementById('dataset').textContent);
 const SCENES=JSON.parse(document.getElementById('scenes').textContent);
 const $=id=>document.getElementById(id);
-let selectedClause='6.4.8',selectedTarget=null,selectedRef=null,allRefs=false,view='graph',sceneKey='data';
+let selectedClause='6.4.8',selectedTarget=null,selectedRef=null,selectedRelated=null,expandRelated=false,allRefs=false,view='graph',sceneKey='data';
 const E=(tag,cl='',txt='')=>{let el=document.createElement(tag);if(cl)el.className=cl;if(txt)el.textContent=txt;return el;};
 function setPage(page){document.body.classList.toggle('side-hidden',page!=='mapping');document.querySelectorAll('.topnav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.querySelectorAll('main .section').forEach(s=>s.classList.toggle('active',s.id==='page-'+page));if(page==='mapping')requestAnimationFrame(lines);if(page==='seah')renderScene('seah',SCENES.seah[sceneKey]);if(page==='saref')renderScene('saref',SCENES.saref);}
 document.querySelectorAll('.topnav button').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.page)));
@@ -40,27 +60,129 @@ function matches(c,q){return (c.clause+' '+c.title+' '+c.core+' '+c.targets.map(
 function renderSide(){const q=$('search').value.trim();let root=$('clauseList');root.replaceChildren();let found=DATA.filter(c=>matches(c,q));$('sidecount').textContent=found.length+'/33';for(let g of ['6.1','6.2','6.3','6.4']){let subset=found.filter(c=>c.group===g);if(!subset.length)continue;root.append(E('div','group-label',({'6.1':'6.1 합의','6.2':'6.2 조직 지원','6.3':'6.3 기술 관리','6.4':'6.4 기술'}[g])));subset.forEach(c=>{let b=E('button','sideitem'+(c.clause===selectedClause?' active':''),c.clause+'  '+c.title);b.type='button';b.addEventListener('click',()=>selectClause(c.clause));root.append(b);});}}
 $('search').addEventListener('input',renderSide);
 function current(){return DATA.find(c=>c.clause===selectedClause)}
-function selectClause(id){selectedClause=id;selectedTarget=null;selectedRef=null;allRefs=false;view='graph';document.querySelectorAll('#viewBtns button').forEach(b=>b.classList.toggle('on',b.dataset.view==='graph'));$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderSide();renderMapping();setPage('mapping')}
-function selectTarget(id){selectedTarget=id;selectedRef=null;renderMapping();}
-function selectReference(id){let c=current();selectedRef=id;const t=c.targets.filter(t=>t.refs.includes(id));if(!t.some(x=>x.id===selectedTarget))selectedTarget=t[0]?.id||null;renderMapping();}
+function selectClause(id){selectedClause=id;selectedTarget=null;selectedRef=null;selectedRelated=null;expandRelated=false;allRefs=false;view='graph';document.querySelectorAll('#viewBtns button').forEach(b=>b.classList.toggle('on',b.dataset.view==='graph'));$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderSide();renderMapping();setPage('mapping')}
+function selectTarget(id){selectedTarget=id;selectedRef=null;selectedRelated=null;expandRelated=false;renderMapping();}
+function selectReference(id){let c=current();selectedRef=id;selectedRelated=null;expandRelated=false;const t=c.targets.filter(t=>t.refs.includes(id));if(!t.some(x=>x.id===selectedTarget))selectedTarget=t[0]?.id||null;renderMapping();}
 function activeRefs(c){let t=c.targets.find(t=>t.id===selectedTarget);return new Set(t?t.refs:[])}
+
+// Each association is derived from the exact IEC 62264-1 reference identifier in the existing v8 data.
+// It is intentionally NOT modeled as an asserted dependency or chronological order between V11 clauses.
+const BY62264=new Map();
+for(const c of DATA)for(const t of c.targets)for(const r of t.refs){
+ if(!r.startsWith('62264:'))continue;
+ if(!BY62264.has(r))BY62264.set(r,[]);
+ BY62264.get(r).push({clause:c.clause,title:c.title,targetId:t.id,targetName:t.name,targetDetail:t.detail});
+}
+function applicable62264(c){
+ const t=c.targets.find(x=>x.id===selectedTarget);
+ if(!t)return [];
+ let refs=t.refs.filter(x=>x.startsWith('62264:'));
+ if(selectedRef)refs=refs.filter(x=>x===selectedRef);
+ return refs;
+}
+function relatedV11(c){
+ const refs=applicable62264(c),out=new Map();
+ for(const r of refs)for(const item of (BY62264.get(r)||[])){
+  if(item.clause===c.clause)continue;
+  if(!out.has(item.clause))out.set(item.clause,{clause:item.clause,title:item.title,shared:new Set(),matches:[]});
+  const g=out.get(item.clause);g.shared.add(r);
+  if(!g.matches.some(m=>m.ref===r&&m.targetId===item.targetId))g.matches.push({...item,ref:r});
+ }
+ return [...out.values()].sort((a,b)=>b.shared.size-a.shared.size || b.matches.length-a.matches.length || a.clause.localeCompare(b.clause,undefined,{numeric:true}));
+}
+function selectRelated(clause){
+ const c=current(),rel=relatedV11(c).find(x=>x.clause===clause);if(!rel)return;
+ selectedRelated=clause;
+ if(!selectedRef || !rel.shared.has(selectedRef))selectedRef=[...rel.shared][0];
+ renderMapping();
+}
+function jumpRelated(clause){
+ const old=current(),rel=relatedV11(old).find(x=>x.clause===clause);if(!rel)return;
+ const key=selectedRef&&rel.shared.has(selectedRef)?selectedRef:[...rel.shared][0];
+ selectClause(clause);const c=current();
+ const t=c.targets.find(t=>t.refs.includes(key));if(t){selectedTarget=t.id;selectedRef=key;renderMapping();}
+}
+function renderRelated(c){
+ const all=relatedV11(c),list=expandRelated?all:all.slice(0,8);
+ const root=$('related');root.replaceChildren();$('relatedCount').textContent=all.length+'개 절';
+ $('crossCounts').textContent='공통 참조 V11 '+all.length+'개 절';
+ if(!applicable62264(c).length){root.append(E('div','emptyRef','선택한 세부 내용은 IEC 62264-1의 참조가 없습니다. 왼쪽에서 다른 세부 내용을 선택하세요.'));return;}
+ if(!all.length){root.append(E('div','emptyRef','같은 세부 참조 절을 공유하는 다른 V11 절이 없습니다.'));return;}
+ for(const g of list){
+  const b=E('button','mcard related'+(selectedRelated===g.clause?' selected':'')+(selectedRelated&&selectedRelated!==g.clause?' dim':''));
+  b.type='button';b.dataset.clause=g.clause;b.dataset.shared=[...g.shared].join(',');
+  b.append(E('span','relmeta',g.clause+' · '+g.shared.size+'개 공통 참조'),E('strong','',g.title));
+  const rn=E('div','refsmini');for(let r of g.shared)rn.append(E('span','refpill','62264-1 '+r.slice(6)));b.append(rn);
+  for(let m of g.matches.slice(0,2))b.append(E('span','relrole','· '+m.targetName));
+  if(g.matches.length>2)b.append(E('span','tiny','외 '+(g.matches.length-2)+'개 세부 관점'));
+  b.addEventListener('click',()=>selectRelated(g.clause));root.append(b);
+  if(selectedRelated===g.clause){let j=E('button','relatedmore','이 V11 절로 이동하여 세부내용 보기');j.type='button';j.addEventListener('click',()=>jumpRelated(g.clause));root.append(j)}
+ }
+ if(!expandRelated&&all.length>list.length){let b=E('button','relatedmore','나머지 '+(all.length-list.length)+'개 절 더보기');b.type='button';b.addEventListener('click',()=>{expandRelated=true;renderMapping()});root.append(b)}
+ else if(expandRelated&&all.length>8){let b=E('button','relatedmore','관련 절 접기');b.type='button';b.addEventListener('click',()=>{expandRelated=false;renderMapping()});root.append(b)}
+}
 function renderMapping(){let c=current();$('clauseTitle').textContent=c.clause+' '+c.title;$('clauseCore').textContent=c.core;$('mappingLevel').textContent=c.level;$('mappingCounts').textContent=c.targets.length+'개 세부 관점 · '+c.refs.length+'개 참조절';if(!selectedTarget||!c.targets.some(t=>t.id===selectedTarget))selectedTarget=c.targets[0]?.id||null;
  let connected=activeRefs(c);let tl=$('targets'),rl=$('refs');tl.replaceChildren();rl.replaceChildren();$('targetCount').textContent=c.targets.length+'개';$('refCount').textContent=(allRefs?c.refs.length:connected.size)+'개 표시';
  for(let t of c.targets){let b=E('button','mcard target'+(selectedTarget===t.id?' selected':'')+(selectedTarget!==t.id&&!allRefs?' dim':''));b.dataset.id=t.id;b.type='button';b.innerHTML='';b.append(E('strong','',t.name),E('small','',t.sourceKind));b.addEventListener('click',()=>selectTarget(t.id));tl.append(b)}
- for(let r of c.refs){if(!allRefs&&!connected.has(r.id))continue;let b=E('button','mcard ref'+(connected.has(r.id)?' selected':' dim'));b.type='button';b.dataset.id=r.id;b.append(E('div','tag',(r.type==='5338'?'KS X ISO/IEC 5338 ':'KS X IEC 62264-1 ')+r.clause),E('strong','',r.core),E('em','',r.why));b.addEventListener('click',()=>selectReference(r.id));rl.append(b)}
+ for(let r of c.refs){if(!allRefs&&!connected.has(r.id))continue;let b=E('button','mcard ref'+((selectedRef?selectedRef===r.id:connected.has(r.id))?' selected'+(selectedRef?' focused':''):' dim'));b.type='button';b.dataset.id=r.id;b.append(E('div','tag',(r.type==='5338'?'KS X ISO/IEC 5338 ':'KS X IEC 62264-1 ')+r.clause),E('strong','',r.core),E('em','',r.why));b.addEventListener('click',()=>selectReference(r.id));rl.append(b)}
  if(!rl.children.length)rl.append(E('p','emptyRef','직접 연결된 참조절이 없는 세부 관점입니다.'));
+ renderRelated(c);
  renderDetails(c);renderTable(c);renderFlows(c);document.querySelectorAll('#viewGraph,#viewTable,#viewFlow,#viewTree').forEach(x=>x.style.display=x.id==='view'+({graph:'Graph',table:'Table',flow:'Flow',tree:'Tree'}[view])?'block':'none');requestAnimationFrame(lines);
 }
-function lines(){let c=current(),container=$('mappingCore'),svg=$('mapLines');svg.replaceChildren();let active=activeRefs(c);let box=container.getBoundingClientRect();if(box.width<620||$('viewGraph').style.display==='none')return;svg.setAttribute('viewBox',`0 0 ${Math.ceil(box.width)} ${Math.ceil(box.height)}`);
- for(let t of c.targets){let src=document.querySelector('#targets [data-id="'+CSS.escape(t.id)+'"]');if(!src)continue;let a=src.getBoundingClientRect();for(let ref of t.refs){if(!allRefs&&t.id!==selectedTarget)continue;let dest=[...document.querySelectorAll('#refs [data-id]')].find(x=>x.dataset.id===ref);if(!dest)continue;let b=dest.getBoundingClientRect();let xa=a.right-box.left, ya=(a.top+a.bottom)/2-box.top, xb=b.left-box.left,yb=(b.top+b.bottom)/2-box.top;const path=document.createElementNS('http://www.w3.org/2000/svg','path');let isActive=t.id===selectedTarget&&active.has(ref);path.setAttribute('d',`M ${xa} ${ya} C ${xa+40} ${ya}, ${xb-40} ${yb}, ${xb} ${yb}`);if(isActive)path.setAttribute('class','active');svg.append(path)}}}
+function lines(){
+ const c=current(),container=$('mappingCore'),svg=$('mapLines');svg.replaceChildren();
+ const active=activeRefs(c),box=container.getBoundingClientRect();
+ if(box.width<620||$('viewGraph').style.display==='none')return;
+ svg.setAttribute('viewBox',`0 0 ${Math.ceil(box.width)} ${Math.ceil(box.height)}`);
+ function edge(a,b,kind,focus){
+  const ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+  const x1=ra.right-box.left,y1=(ra.top+ra.bottom)/2-box.top,x2=rb.left-box.left,y2=(rb.top+rb.bottom)/2-box.top;
+  const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d',`M ${x1} ${y1} C ${x1+27} ${y1},${x2-27} ${y2},${x2} ${y2}`);
+  p.setAttribute('class',(kind==='internal'?'internal ':'')+(focus?'active':(selectedRelated?'dim':'')));
+  svg.append(p);
+ }
+ const targets=[...document.querySelectorAll('#targets [data-id]')],refs=[...document.querySelectorAll('#refs [data-id]')],related=[...document.querySelectorAll('#related [data-clause]')];
+ for(const t of c.targets){const src=targets.find(x=>x.dataset.id===t.id);if(!src)continue;
+  for(const r of t.refs){if(!allRefs&&t.id!==selectedTarget)continue;
+   const dst=refs.find(x=>x.dataset.id===r);if(!dst)continue;
+   const focus=t.id===selectedTarget&&active.has(r)&&(!selectedRef||selectedRef===r);
+   edge(src,dst,'source',focus);
+  }
+ }
+ for(const r of related){
+  const shared=r.dataset.shared.split(',');for(const refid of shared){
+   if(selectedRef&&selectedRef!==refid)continue;
+   const src=refs.find(x=>x.dataset.id===refid);if(!src)continue;
+   edge(src,r,'internal',!selectedRelated||selectedRelated===r.dataset.clause);
+  }
+ }
+}
 window.addEventListener('resize',()=>requestAnimationFrame(lines));
 function renderDetails(c){let t=c.targets.find(t=>t.id===selectedTarget);let left=$('targetDetail'),right=$('refDetail');left.replaceChildren();right.replaceChildren();left.append(E('h3','',t?.name||'세부 내용 선택'),E('p','',t?.detail||''),E('div','tiny',t?.sourceKind||''));right.append(E('h3','','연결된 참조 내용'));
  if(t?.refs.length){for(let k of t.refs){let r=c.refs.find(x=>x.id===k);if(!r)continue;let d=E('div','', '');d.style.marginBottom='12px';d.append(E('div','refpill', (r.type==='5338'?'KS X ISO/IEC 5338 ':'KS X IEC 62264-1 ')+r.clause),E('p','',r.core),E('div','tiny','연결 이유: '+r.why));right.append(d)}}else right.append(E('p','', '직접 연결한 참조절이 없습니다.'));
+ renderRelatedDetail(c);
 }
-function renderTable(c){let root=$('tableHere');root.replaceChildren();let table=E('table','maptable'),head=E('thead'),tr=E('tr');for(let h of ['V11 세부 내용','참조 절','참조 내용 요약','연결 이유'])tr.append(E('th','',h));head.append(tr);table.append(head);let body=E('tbody');for(let t of c.targets){let refs=t.refs.length?t.refs:[null];for(let rkey of refs){let r=c.refs.find(r=>r.id===rkey);let row=E('tr','clickrow');row.append(E('td','',t.name),E('td','',r?(r.type==='5338'?'ISO/IEC 5338 ':'IEC 62264-1 ')+r.clause:'연결 없음'),E('td','',r?.core||'—'),E('td','',r?.why||'—'));row.addEventListener('click',()=>{view='graph';document.querySelectorAll('#viewBtns button').forEach(b=>b.classList.toggle('on',b.dataset.view==='graph'));selectTarget(t.id)});body.append(row)}}table.append(body);root.append(table);}
+
+function renderRelatedDetail(c){
+ const box=$('relatedDetail');box.replaceChildren();
+ box.append(E('h3','','③ V11 내부의 관련 절'));
+ const all=relatedV11(c),g=all.find(x=>x.clause===selectedRelated);
+ if(!applicable62264(c).length){box.append(E('p','','선택한 수행내용에 IEC 62264-1의 참조가 없습니다.'));return;}
+ if(!g){box.append(E('p','','오른쪽 ③에 나온 관련 절을 선택하면 두 V11 절이 같은 IEC 62264-1 정보를 어떻게 다르게 활용하는지 비교할 수 있습니다.'));box.append(E('div','tiny','동일한 참조 절의 존재만으로 수행 순서나 직접 참조가 성립하지 않습니다.'));return;}
+ box.append(E('div','refpill','V11 '+g.clause+' '+g.title));
+ for(let m of g.matches.filter(m=>!selectedRef||selectedRef===m.ref)){
+  const r=c.refs.find(r=>r.id===m.ref);
+  const group=E('div');group.style.marginTop='10px';
+  group.append(E('div','tiny','공통: IEC 62264-1 '+m.ref.slice(6)+' · '+(r?.core||'참조 정보')),
+      E('p','','다른 절의 활용: '+m.targetName+' — '+m.targetDetail));box.append(group);
+ }
+ box.append(E('div','relation-meaning','관계 유형: 동일한 세부 참조 절 사용 (자동 추론). 직접 인용관계·작업 순서·표준 적합성은 별도 확인 대상입니다.'));
+}
+function renderTable(c){let root=$('tableHere');root.replaceChildren();let table=E('table','maptable'),head=E('thead'),tr=E('tr');for(let h of ['V11 세부 내용','참조 절','참조 내용 요약','연결 이유','③ 같은 참조를 쓰는 V11 절'])tr.append(E('th','',h));head.append(tr);table.append(head);let body=E('tbody');for(let t of c.targets){let refs=t.refs.length?t.refs:[null];for(let rkey of refs){let r=c.refs.find(r=>r.id===rkey);let row=E('tr','clickrow');const shared=rkey?.startsWith('62264:')?[...new Set((BY62264.get(rkey)||[]).map(i=>i.clause).filter(id=>id!==c.clause))]:[];row.append(E('td','',t.name),E('td','',r?(r.type==='5338'?'ISO/IEC 5338 ':'IEC 62264-1 ')+r.clause:'연결 없음'),E('td','',r?.core||'—'),E('td','',r?.why||'—'),E('td','',shared.length?shared.join(' · '):'—'));row.addEventListener('click',()=>{view='graph';document.querySelectorAll('#viewBtns button').forEach(b=>b.classList.toggle('on',b.dataset.view==='graph'));selectTarget(t.id)});body.append(row)}}table.append(body);root.append(table);}
 function renderFlows(c){let root=$('flowHere'),tree=$('treeHere');root.replaceChildren();tree.replaceChildren();tree.append(E('div','chip green',c.clause+' '+c.title));for(let i=0;i<c.targets.length;i++){let t=c.targets[i],step=E('div','step'+(t.id===selectedTarget?' active':''));step.append(E('div','stepnum',String(i+1)));let wrap=E('div');wrap.append(E('strong','',t.name),E('p','',t.detail));let rs=E('div','refsmini');t.refs.forEach(r=>rs.append(E('span','refpill',r.replace('5338:','5338 ').replace('62264:','62264 '))));wrap.append(rs);step.append(wrap);step.addEventListener('click',()=>selectTarget(t.id));root.append(step);let leaf=E('div','step');leaf.style.marginLeft='15px';leaf.style.borderLeft='2px solid #c8dce5';let lw=E('div');lw.append(E('strong','','└ '+t.name),E('p','',t.refs.map(k=>{let r=c.refs.find(x=>x.id===k);return (r?.type==='5338'?'5338 ':'62264 ')+(r?.clause||'')+' '+(r?.core||'')}).join(' / ')));leaf.append(E('div','stepnum',''),lw);leaf.addEventListener('click',()=>{view='graph';selectTarget(t.id)});tree.append(leaf)}}
 $('viewBtns').addEventListener('click',e=>{let b=e.target.closest('button[data-view]');if(!b)return;view=b.dataset.view;document.querySelectorAll('#viewBtns button').forEach(x=>x.classList.toggle('on',x===b));renderMapping()});
-$('focusBtn').addEventListener('click',()=>{allRefs=false;$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderMapping()});$('allBtn').addEventListener('click',()=>{allRefs=true;$('allBtn').classList.add('on');$('focusBtn').classList.remove('on');renderMapping()});$('resetBtn').addEventListener('click',()=>{selectedTarget=current().targets[0]?.id;selectedRef=null;allRefs=false;$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderMapping()});
+$('focusBtn').addEventListener('click',()=>{allRefs=false;$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderMapping()});$('allBtn').addEventListener('click',()=>{allRefs=true;$('allBtn').classList.add('on');$('focusBtn').classList.remove('on');renderMapping()});$('resetBtn').addEventListener('click',()=>{selectedTarget=current().targets[0]?.id;selectedRef=null;selectedRelated=null;expandRelated=false;allRefs=false;$('focusBtn').classList.add('on');$('allBtn').classList.remove('on');renderMapping()});
 function drawSVG(svg,scene,detailBox){const ns='http://www.w3.org/2000/svg',mk=(tag,attrs)=>{let n=document.createElementNS(ns,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));return n};svg.replaceChildren();let width=1110,height=775;svg.setAttribute('viewBox','0 0 '+width+' '+height);let marker=mk('defs');let m=mk('marker',{id:svg.id+'Arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'});m.append(mk('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:'#91aabe'}));marker.append(m);svg.append(marker);let index=Object.fromEntries(scene.nodes.map(n=>[n.id,n]));
  const clear=()=>svg.querySelectorAll('.scene-node,.scene-edge').forEach(n=>n.classList.remove('active','faded'));
  const info=(title,detail,status)=>{detailBox.replaceChildren();detailBox.append(E('div','eyebrow','선택한 객체·관계'),E('h3','',title),E('p','',detail));if(status)detailBox.append(E('div','chip amber',status));let link=E('div','tiny','그래프의 객체 또는 화살표를 선택해 관계의 의미를 확인할 수 있습니다.');detailBox.append(link)};

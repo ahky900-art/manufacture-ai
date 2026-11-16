@@ -1,10 +1,12 @@
-# KS V11 제조 사례 기반 매칭 온톨로지
+# 제조 AI V11 객체 중심 그래프 v7
 
-GitHub Pages에서 `index.html`을 시작 파일로 사용합니다.
+- `index.html`: 오프라인 독립 실행 HTML. GitHub Pages에서 동작하며 CDN/API 불필요.
+- `V11_Field_Checklist.xlsx`: 사용자가 기존에 요청한 체크리스트 (원본 유지).
+- 표준 × 세아제강: 현장 관찰된 사실(실선)과 적용 아이디어(점선)를 구분해 노드·관계 시각화.
+- 우수사례: ETSI SAREF4INMA v2.1.1, OpenMES ISA-95, Eclipse BaSyx 원문을 바탕으로 관계 재구성.
+- 표준 그래프: 기존 절별 참조·점검표 유지.
 
-- 탭 1: 세아제강 제조 객체 관계 → 표준 수행사항 → 요구 증빙(33개 절).
-- 탭 2: 기존 V11·5338·62264 참조 그래프와 현장 O/X 점검(원래 데이터 보존).
-- 탭 3: 공개 제조 표준 적용 사례 6개(원문 링크).
-- 사례 내용은 세아제강 발표 DX V10과 V11 도식 Figures.pptx에서 확인된 범위만 실제 관찰로 표현합니다. 운영 실적 미확인은 명시합니다.
-- 표준 참조 간 연결과 실제 제조 객체 간 연결은 서로 다른 종류의 관계입니다.
-- 외부 JS/CSS 호출 없이 오프라인 실행됩니다.
+출처: https://saref.etsi.org/saref4inma/v2.1.1/ ; https://github.com/baryonlabs/OpenMesKorea/blob/main/docs/isa95.md ; https://eclipse.dev/basyx/asset_integration/
+세아제강: 사용자가 제공한 `DX를 위한 데이터 수집 전략과 세아제강 사례-V10.pptx`의 자료 내용.
+
+시각화는 이해를 돕기 위한 데이터 모델링이며 정식 OWL·표준 적합성 인증 또는 세아제강의 완료된 구축 실적이 아닙니다.
